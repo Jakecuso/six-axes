@@ -1,0 +1,311 @@
+/* SIX AXES — a cyanotype drawing sheet.
+   Real blueprints are blue, not black: the ground is Prussian, the linework is
+   pale, and Version One's orange is reserved for Version One. Phase 07 is a
+   redline — the way a marked-up drawing actually looks. */
+
+@font-face{font-family:"Plex Cond";src:url("../fonts/plex-cond-700.woff2")format("woff2");font-weight:700;font-display:swap}
+@font-face{font-family:"Plex Cond";src:url("../fonts/plex-cond-600.woff2")format("woff2");font-weight:600;font-display:swap}
+@font-face{font-family:"Plex";src:url("../fonts/plex-sans-400.woff2")format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Plex";src:url("../fonts/plex-sans-600.woff2")format("woff2");font-weight:600;font-display:swap}
+@font-face{font-family:"Plex Mono";src:url("../fonts/plex-mono-400.woff2")format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Plex Mono";src:url("../fonts/plex-mono-500.woff2")format("woff2");font-weight:500;font-display:swap}
+
+:root{
+  --ground:#0e2740;
+  --deep:#081a2c;
+  --ink:#e9f2f9;
+  --dim:#9dbdd6;
+  --line:#3f7099;
+  --grid:rgba(143,195,227,.07);
+  --grid-major:rgba(143,195,227,.11);
+  --orange:#f0851f;      /* Version One */
+  --red:#ff6f59;         /* redline markup */
+  --rail:76px;
+  --col:640px;
+  --head:290px;
+  --gap:clamp(2rem,4vw,3.5rem);
+  --sans:"Plex",ui-sans-serif,system-ui,sans-serif;
+  --cond:"Plex Cond","Plex",ui-sans-serif,system-ui,sans-serif;
+  --mono:"Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  --pad:clamp(1.25rem,4vw,2.5rem);
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  background-color:var(--ground);
+  /* Drafting grid: 24px minor, 120px major. */
+  background-image:
+    linear-gradient(var(--grid-major) 1px,transparent 1px),
+    linear-gradient(90deg,var(--grid-major) 1px,transparent 1px),
+    linear-gradient(var(--grid) 1px,transparent 1px),
+    linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:120px 120px,120px 120px,24px 24px,24px 24px;
+  color:var(--ink);
+  font:400 clamp(1rem,.96rem + .18vw,1.0625rem)/1.62 var(--sans);
+  font-feature-settings:"kern","liga";
+  overflow-x:hidden;
+}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit}
+
+.skip{position:fixed;top:0;left:0;z-index:100;padding:.7rem 1.1rem;background:var(--ink);
+  color:var(--deep);font:500 .8rem/1 var(--mono);transform:translateY(-120%)}
+.skip:focus{transform:none}
+:focus-visible{outline:2px solid var(--orange);outline-offset:3px}
+
+/* ───────── hero: a drawing sheet's title area ───────── */
+.hero{position:relative;min-height:100svh;display:grid;
+  grid-template-rows:1fr auto auto;
+  padding:calc(env(safe-area-inset-top,0px) + 2rem) var(--pad) 2rem;
+  overflow:hidden}
+.hero__media{position:absolute;inset:0;z-index:-1}
+.hero__media img{width:100%;height:100%;object-fit:cover;object-position:50% 30%}
+.hero__media::after{content:"";position:absolute;inset:0;
+  background:
+    linear-gradient(180deg,rgba(8,26,44,.55) 0%,rgba(8,26,44,.35) 35%,rgba(8,26,44,.92) 88%),
+    linear-gradient(90deg,rgba(8,26,44,.8),rgba(8,26,44,.1) 62%)}
+.hero__inner{align-self:end;max-width:22ch}
+.hero h1{
+  margin:0;
+  font:700 clamp(3.4rem,15vw,10rem)/.84 var(--cond);
+  letter-spacing:-.025em;
+  text-transform:uppercase;
+}
+.hero__tagline{margin:1.1rem 0 0;max-width:20ch;
+  font:600 clamp(1.05rem,2.4vw,1.5rem)/1.3 var(--cond);color:var(--ink)}
+
+.titleblock{
+  align-self:end;justify-self:start;
+  margin:2.25rem 0 0;display:grid;gap:0;
+  border:1px solid var(--line);
+  background:rgba(8,26,44,.72);
+  backdrop-filter:blur(2px);
+  max-width:34rem;
+}
+.titleblock>div{display:grid;grid-template-columns:7.5rem 1fr;
+  border-bottom:1px solid rgba(63,112,153,.5)}
+.titleblock>div:last-child{border-bottom:0}
+.titleblock dt{padding:.5rem .75rem;border-right:1px solid rgba(63,112,153,.5);
+  font:400 .68rem/1.5 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--dim)}
+.titleblock dd{margin:0;padding:.5rem .75rem;font:500 .82rem/1.5 var(--mono)}
+
+.hero__scroll{margin:2rem 0 0}
+.hero__scroll a{font:400 .78rem/1 var(--mono);letter-spacing:.24em;
+  text-transform:uppercase;color:var(--dim);text-decoration:none;
+  display:inline-flex;align-items:center;gap:.7rem}
+.hero__scroll a::after{content:"";width:2.5rem;height:1px;background:var(--line);
+  transform-origin:left;animation:reach 2.6s cubic-bezier(.4,0,.2,1) infinite}
+.hero__scroll a:hover{color:var(--ink)}
+@keyframes reach{0%,100%{transform:scaleX(.35)}50%{transform:scaleX(1)}}
+
+/* ───────── phase rail ───────── */
+.rail{position:fixed;top:0;left:0;bottom:0;width:var(--rail);z-index:20;
+  display:none;align-items:center;padding-left:.9rem;
+  border-right:1px solid rgba(63,112,153,.25);
+  background:linear-gradient(90deg,rgba(8,26,44,.92),rgba(8,26,44,.55))}
+.rail ol{list-style:none;margin:0;padding:0;display:grid;gap:.15rem}
+.rail a{display:flex;align-items:center;gap:.6rem;padding:.16rem 0;
+  text-decoration:none;color:var(--dim);opacity:.5;transition:opacity .2s,color .2s}
+.rail__n{font:400 .7rem/1 var(--mono);letter-spacing:.04em}
+.rail__t{font:400 .72rem/1.3 var(--sans);white-space:nowrap;
+  opacity:0;transform:translateX(-4px);transition:opacity .22s,transform .22s;
+  pointer-events:none}
+.rail a::before{content:"";width:9px;height:1px;background:currentColor;flex:none;
+  transition:width .22s}
+.rail a:hover,.rail a:focus-visible{opacity:1;color:var(--ink)}
+.rail a:hover .rail__t,.rail a:focus-visible .rail__t{opacity:1;transform:none}
+.rail li.is-current a{opacity:1;color:var(--orange)}
+.rail li.is-current a::before{width:22px}
+.rail li.is-current .rail__t{opacity:1;transform:none;color:var(--ink)}
+
+/* Mobile progress strip. */
+.bar{position:fixed;top:0;left:0;right:0;height:2px;z-index:30;
+  background:rgba(63,112,153,.25)}
+.bar__fill{display:block;height:100%;width:0;background:var(--orange);
+  transform-origin:left}
+.bar__label{position:absolute;top:.55rem;right:var(--pad);
+  font:400 .66rem/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;
+  color:var(--dim)}
+
+/* ───────── phases ───────── */
+main{padding-left:0}
+.phase{
+  position:relative;
+  max-width:calc(var(--head) + var(--col) + 3.5rem);
+  margin:0 auto;padding:clamp(4.5rem,11vh,8rem) var(--pad);
+  border-top:1px solid rgba(63,112,153,.3);
+}
+.phase:first-child{border-top:0}
+
+.phase__head{align-self:start}
+.phase__num{
+  margin:0 0 1.1rem;display:inline-flex;align-items:baseline;gap:.5rem;
+  padding:.3rem .6rem;border:1px solid var(--line);
+  font:500 .76rem/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;
+  color:var(--dim);
+}
+.phase__word{color:rgba(157,189,214,.6)}
+.phase h2{margin:0;font:700 clamp(2rem,4.6vw,3.15rem)/.98 var(--cond);
+  letter-spacing:-.018em;text-wrap:balance}
+.phase__summary{margin:1.1rem 0 0;max-width:34ch;color:var(--dim);
+  font:400 1.02rem/1.5 var(--sans)}
+/* The rule that draws when the phase arrives. */
+.phase__head::after{content:"";display:block;height:1px;margin-top:1.6rem;
+  background:var(--line);transform-origin:left}
+
+.phase__body>p{margin:0 0 1.35rem;max-width:68ch}
+.phase__body>p:last-of-type{margin-bottom:0}
+.phase__body a{color:var(--ink);text-decoration:none;
+  border-bottom:1px solid var(--orange);padding-bottom:1px;
+  transition:background-color .15s}
+.phase__body a:hover{background:rgba(240,133,31,.16)}
+
+/* Ordered lists are failure and lesson counts: the numbers are the content. */
+.findings{list-style:none;counter-reset:f;margin:1.9rem 0;padding:0;
+  display:grid;gap:1.15rem;max-width:66ch}
+.findings li{counter-increment:f;position:relative;padding-left:3.25rem}
+.findings li::before{content:counter(f,decimal-leading-zero);position:absolute;
+  left:0;top:.1rem;font:500 .8rem/1.5 var(--mono);color:var(--orange);
+  letter-spacing:.06em}
+.findings li::after{content:"";position:absolute;left:2rem;top:.72rem;
+  width:.85rem;height:1px;background:rgba(63,112,153,.7)}
+
+.commands{list-style:none;margin:1.9rem 0;padding:0;display:grid;gap:0;
+  max-width:52ch;border-top:1px solid rgba(63,112,153,.35)}
+.commands li{border-bottom:1px solid rgba(63,112,153,.35);padding:.85rem .25rem}
+.commands q{font:400 1.06rem/1.4 var(--mono);color:var(--ink);quotes:"\201C" "\201D"}
+.commands q::before{color:var(--orange)}
+.commands q::after{color:var(--orange)}
+
+/* ───────── figures ───────── */
+.shot{margin:2.5rem 0 0}
+.shot--lead{margin-top:2.75rem}
+.shot__frame{position:relative;border:1px solid rgba(63,112,153,.55);padding:6px;
+  background:rgba(8,26,44,.4)}
+/* Crop marks, the way a plotted sheet trims. */
+.shot__frame::before,.shot__frame::after{content:"";position:absolute;
+  width:13px;height:13px;border:1px solid var(--line);pointer-events:none}
+.shot__frame::before{top:-1px;left:-1px;border-right:0;border-bottom:0}
+.shot__frame::after{bottom:-1px;right:-1px;border-left:0;border-top:0}
+.shot__frame img{margin-inline:auto}
+.shot figcaption{margin-top:.7rem;padding-left:.1rem;max-width:56ch;
+  font:400 .78rem/1.55 var(--mono);color:var(--dim)}
+
+.gallery{margin-top:2.5rem;display:grid;gap:12px;
+  grid-template-columns:repeat(auto-fill,minmax(180px,1fr))}
+.gallery .shot{margin:0}
+.gallery .shot img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.gallery .shot:first-child{grid-column:1/-1}
+/* The lead shot keeps its own proportions, capped so a portrait photo cannot
+   take the whole screen before the grid below it. */
+.gallery .shot:first-child img{aspect-ratio:auto;max-height:76vh}
+.gallery .shot:not(:first-child) figcaption{position:absolute;width:1px;height:1px;
+  padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.gallery .shot:first-child figcaption{font-size:.76rem}
+
+/* ───────── paper ───────── */
+.paper{display:grid;gap:.35rem;margin:2.1rem 0 0;padding:1.15rem 1.25rem;
+  border:1px solid var(--line);text-decoration:none;max-width:60ch;
+  transition:background-color .18s,border-color .18s}
+.paper:hover{background:rgba(63,112,153,.14);border-color:var(--orange)}
+.paper__label{font:500 .7rem/1 var(--mono);letter-spacing:.14em;
+  text-transform:uppercase;color:var(--orange)}
+.paper__title{font:600 1rem/1.4 var(--sans)}
+.paper__meta{font:400 .72rem/1 var(--mono);color:var(--dim)}
+.phase__body .paper{border-bottom:1px solid var(--line)}
+.phase__body .paper:hover{border-bottom-color:var(--orange)}
+
+/* ───────── pull quotes ───────── */
+.pull{max-width:calc(var(--head) + var(--col) + 3.5rem);margin:0 auto;
+  padding:clamp(3rem,7vh,5rem) var(--pad)}
+.pull blockquote{margin:0;max-width:26ch}
+.pull p{margin:0;font:600 clamp(1.5rem,3.6vw,2.5rem)/1.16 var(--cond);
+  letter-spacing:-.012em;text-wrap:balance}
+.pull p::before{content:"";display:block;width:3.5rem;height:2px;
+  background:var(--orange);margin-bottom:1.3rem}
+
+/* ───────── phase 07: redline ───────── */
+.phase--redline{--line:#8a4a45;--orange:var(--red);--dim:#d5a79e;
+  position:relative;border-top-color:rgba(255,111,89,.45)}
+/* Full-bleed: the break in rhythm should cross the whole sheet. */
+.phase--redline::before{content:"";position:absolute;top:0;bottom:0;left:50%;
+  width:100vw;transform:translateX(-50%);z-index:-1;pointer-events:none;
+  background:linear-gradient(180deg,rgba(30,13,16,0),rgba(30,13,16,.88) 9%,
+    rgba(30,13,16,.88) 91%,rgba(30,13,16,0))}
+.phase--redline .phase__num{color:var(--red);border-color:rgba(255,111,89,.65)}
+.phase--redline .phase__word{color:rgba(255,111,89,.55)}
+.phase--redline .phase__head::after{background:var(--red)}
+.phase--redline .findings li::after{background:rgba(255,111,89,.6)}
+/* The list header reads as a drawing annotation rather than prose. */
+.phase--redline .phase__body>p:first-of-type{color:var(--red);
+  font:500 .82rem/1.5 var(--mono);letter-spacing:.1em;text-transform:uppercase}
+
+.phase--open .phase__head::after{
+  background:repeating-linear-gradient(90deg,var(--line) 0 7px,transparent 7px 14px)}
+
+/* ───────── end ───────── */
+.end{border-top:1px solid rgba(63,112,153,.35);background:var(--deep);
+  padding:clamp(4rem,10vh,7rem) var(--pad) calc(env(safe-area-inset-bottom,0px) + 3rem)}
+.end__inner{max-width:calc(var(--head) + var(--col) + 3.5rem);margin:0 auto;
+  display:grid;gap:1.6rem;justify-items:start}
+.end h2{margin:0;font:700 clamp(2.4rem,7vw,4.5rem)/.94 var(--cond);
+  letter-spacing:-.02em;text-transform:uppercase}
+.end__org{margin:0;font:400 .84rem/1.7 var(--mono);color:var(--dim)}
+.end__org span{color:rgba(157,189,214,.62)}
+.end__links{list-style:none;margin:.4rem 0 0;padding:0;display:flex;flex-wrap:wrap;gap:0}
+.end__links li{border:1px solid var(--line);border-right:0}
+.end__links li:last-child{border-right:1px solid var(--line)}
+.end__links a{display:block;padding:.7rem 1.35rem;text-decoration:none;
+  font:500 .8rem/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;
+  transition:background-color .16s,color .16s}
+.end__links a:hover{background:var(--orange);color:var(--deep)}
+.end .shot{margin:1rem 0 0;width:104px}
+.end .shot__frame{border:0;padding:0;background:none}
+.end .shot__frame::before,.end .shot__frame::after{display:none}
+
+/* ───────── reveal ───────── */
+.js .phase__head::after{transform:scaleX(0);transition:transform .75s cubic-bezier(.25,.8,.3,1)}
+.js .phase.is-in .phase__head::after{transform:scaleX(1)}
+.js .phase__body>*{opacity:0;transition:opacity .6s ease .12s}
+.js .phase.is-in .phase__body>*{opacity:1}
+.js .pull blockquote{opacity:0;transition:opacity .6s ease}
+.js .pull.is-in blockquote{opacity:1}
+
+/* ───────── layout up ───────── */
+@media (min-width:640px){
+  .gallery{grid-template-columns:repeat(auto-fill,minmax(220px,1fr))}
+}
+@media (min-width:1000px){
+  .phase{display:grid;grid-template-columns:var(--head) minmax(0,var(--col));
+    gap:var(--gap);align-items:start}
+  .phase__head{position:sticky;top:clamp(4rem,16vh,8rem)}
+  .pull{padding-left:calc(var(--pad) + var(--head) + var(--gap))}
+  .pull blockquote{max-width:30ch}
+}
+@media (min-width:1180px){
+  .rail{display:flex}
+  .bar{display:none}
+  main,.end{padding-left:var(--rail)}
+  .hero{padding-left:calc(var(--rail) + var(--pad))}
+}
+
+/* ───────── reduced motion ───────── */
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;
+    transition-duration:.001ms!important}
+  .js .phase__body>*,.js .pull blockquote{opacity:1}
+  .js .phase__head::after{transform:none}
+}
+@media (prefers-reduced-motion:no-preference){
+  html{scroll-behavior:smooth}
+}
+
+/* Printing a drawing sheet should look like one. */
+@media print{
+  body{background:#fff;color:#000}
+  .rail,.bar,.skip,.hero__scroll{display:none}
+  .phase{display:block;page-break-inside:avoid}
+}

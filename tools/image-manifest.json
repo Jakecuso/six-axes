@@ -1,0 +1,1154 @@
+{
+ "hero-volt": {
+  "alt": "VOLT, the yellow six-axis arm, reaching forward with its gripper open",
+  "caption": "",
+  "h": 371,
+  "sizes": {
+   "1600": {
+    "file": "hero-volt-1600.webp",
+    "h": 371,
+    "w": 495
+   },
+   "800": {
+    "file": "hero-volt-800.webp",
+    "h": 371,
+    "w": 495
+   }
+  },
+  "w": 495
+ },
+ "logo-mind": {
+  "alt": "The MIND logo: a coiled snake around a shield lettered MIND",
+  "caption": "",
+  "h": 266,
+  "sizes": {
+   "1600": {
+    "file": "logo-mind-1600.webp",
+    "h": 266,
+    "w": 279
+   },
+   "800": {
+    "file": "logo-mind-800.webp",
+    "h": 266,
+    "w": 279
+   }
+  },
+  "w": 279
+ },
+ "p01-slicer-arctos": {
+  "alt": "Slicer software showing the six-axis arm model queued for printing",
+  "caption": "611 x 299 x 631 mm of parts, before any of it existed.",
+  "h": 2133,
+  "sizes": {
+   "1600": {
+    "file": "p01-slicer-arctos-1600.webp",
+    "h": 2133,
+    "w": 1600
+   },
+   "800": {
+    "file": "p01-slicer-arctos-800.webp",
+    "h": 1067,
+    "w": 800
+   }
+  },
+  "w": 1600
+ },
+ "p01-version-one-bench": {
+  "alt": "The orange Version One arm folded on a desk beside a 3D printer",
+  "caption": "The orange one, built first.",
+  "h": 1200,
+  "sizes": {
+   "1600": {
+    "file": "p01-version-one-bench-1600.webp",
+    "h": 1200,
+    "w": 1600
+   },
+   "800": {
+    "file": "p01-version-one-bench-800.webp",
+    "h": 600,
+    "w": 800
+   }
+  },
+  "w": 1600
+ },
+ "p02-circuit-sim": {
+  "alt": "Browser-based circuit simulator wiring up joint driver boards and displays",
+  "caption": "Simulating the driver wiring before committing to it.",
+  "h": 1200,
+  "sizes": {
+   "1600": {
+    "file": "p02-circuit-sim-1600.webp",
+    "h": 1200,
+    "w": 1600
+   },
+   "800": {
+    "file": "p02-circuit-sim-800.webp",
+    "h": 600,
+    "w": 800
+   }
+  },
+  "w": 1600
+ },
+ "p02-fusion-arm": {
+  "alt": "Fusion 360 with the full six-axis arm assembly on screen",
+  "caption": "Fusion 360. The whole arm, before a single part was printed.",
+  "h": 1200,
+  "sizes": {
+   "1600": {
+    "file": "p02-fusion-arm-1600.webp",
+    "h": 1200,
+    "w": 1600
+   },
+   "800": {
+    "file": "p02-fusion-arm-800.webp",
+    "h": 600,
+    "w": 800
+   }
+  },
+  "w": 1600
+ },
+ "p03-cad-cutaway": {
+  "alt": "Cutaway CAD render of the arm showing the internals of every joint",
+  "caption": "Six joints, sectioned. Each one is a place the math can go wrong.",
+  "h": 141,
+  "sizes": {
+   "1600": {
+    "file": "p03-cad-cutaway-1600.webp",
+    "h": 141,
+    "w": 272
+   },
+   "800": {
+    "file": "p03-cad-cutaway-800.webp",
+    "h": 141,
+    "w": 272
+   }
+  },
+  "w": 272
+ },
+ "p04-dh-table": {
+  "alt": "Modified DH parameter table listing all six frames with their link lengths, twists, offsets and joint variables, from J1 base rotation to J6 wrist roll",
+  "caption": "The table the whole arm came out of. Six frames, J1 base rotation through J6 wrist roll.",
+  "h": 156,
+  "sizes": {
+   "1600": {
+    "file": "p04-dh-table-1600.webp",
+    "h": 156,
+    "w": 580
+   },
+   "800": {
+    "file": "p04-dh-table-800.webp",
+    "h": 156,
+    "w": 580
+   }
+  },
+  "w": 580
+ },
+ "p04-frames": {
+  "alt": "Spatial frame visualization showing coordinate triads at each joint along the kinematic chain, with the forward kinematics position vector drawn in green",
+  "caption": "Each joint's coordinate triad, and the position vector that falls out of composing all six transforms.",
+  "h": 300,
+  "sizes": {
+   "1600": {
+    "file": "p04-frames-1600.webp",
+    "h": 300,
+    "w": 580
+   },
+   "800": {
+    "file": "p04-frames-800.webp",
+    "h": 300,
+    "w": 580
+   }
+  },
+  "w": 580
+ },
+ "p05-arm-bench": {
+  "alt": "The orange arm laid out on a bench with its wiring exposed",
+  "caption": "",
+  "h": 1100,
+  "sizes": {
+   "1600": {
+    "file": "p05-arm-bench-1600.webp",
+    "h": 1100,
+    "w": 1466
+   },
+   "800": {
+    "file": "p05-arm-bench-800.webp",
+    "h": 600,
+    "w": 800
+   }
+  },
+  "w": 1466
+ },
+ "p05-base-driver": {
+  "alt": "The orange arm base opened up with a driver board and wiring harness inside",
+  "caption": "",
+  "h": 2133,
+  "sizes": {
+   "1600": {
+    "file": "p05-base-driver-1600.webp",
+    "h": 2133,
+    "w": 1600
+   },
+   "800": {
+    "file": "p05-base-driver-800.webp",
+    "h": 1067,
+    "w": 800
+   }
+  },
+  "w": 1600
+ },
+ "p05-can-sim": {
+  "alt": "CAN bus simulation in a browser showing three joint nodes with their hex IDs",
+  "caption": "Joint Z 0x03, Joint A 0x04, Joint B 0x05. Learning CAN addressing before wiring it.",
+  "h": 2133,
+  "sizes": {
+   "1600": {
+    "file": "p05-can-sim-1600.webp",
+    "h": 2133,
+    "w": 1600
+   },
+   "800": {
+    "file": "p05-can-sim-800.webp",
+    "h": 1067,
+    "w": 800
+   }
+  },
+  "w": 1600
+ },
+ "p05-joint-motor": {
+  "alt": "Close-up of an orange printed joint with its motor and belt drive",
+  "caption": "",
+  "h": 1096,
+  "sizes": {
+   "1600": {
+    "file": "p05-joint-motor-1600.webp",
+    "h": 1096,
+    "w": 1461
+   },
+   "800": {
+    "file": "p05-joint-motor-800.webp",
+    "h": 600,
+    "w": 800
+   }
+  },
+  "w": 1461
+ },
+ "p05-mounted": {
+  "alt": "The orange arm mounted above a 3D printer, fully assembled",
+  "caption": "Version One, assembled and moving.",
+  "h": 2133,
+  "sizes": {
+   "1600": {
+    "file": "p05-mounted-1600.webp",
+    "h": 2133,
+    "w": 1600
+   },
+   "800": {
+    "file": "p05-mounted-800.webp",
+    "h": 1067,
+    "w": 800
+   }
+  },
+  "w": 1600
+ },
+ "p05-standing": {
+  "alt": "The orange Version One arm standing assembled on a desk",
+  "caption": "",
+  "h": 2133,
+  "sizes": {
+   "1600": {
+    "file": "p05-standing-1600.webp",
+    "h": 2133,
+    "w": 1600
+   },
+   "800": {
+    "file": "p05-standing-800.webp",
+    "h": 1067,
+    "w": 800
+   }
+  },
+  "w": 1600
+ },
+ "p06-base-boards": {
+  "alt": "The arm base with control boards and colored wiring mounted inside",
+  "caption": "",
+  "h": 2133,
+  "sizes": {
+   "1600": {
+    "file": "p06-base-boards-1600.webp",
+    "h": 2133,
+    "w": 1600
+   },
+   "800": {
+    "file": "p06-base-boards-800.webp",
+    "h": 1067,
+    "w": 800
+   }
+  },
+  "w": 1600
+ },
+ "p06-cycloidal-disc": {
+  "alt": "A printed cycloidal gearbox assembly with its pin ring exposed",
+  "caption": "The cycloidal gearbox, assembled.",
+  "h": 1200,
+  "sizes": {
+   "1600": {
+    "file": "p06-cycloidal-disc-1600.webp",
+    "h": 1200,
+    "w": 1600
+   },
+   "800": {
+    "file": "p06-cycloidal-disc-800.webp",
+    "h": 600,
+    "w": 800
+   }
+  },
+  "w": 1600
+ },
+ "p06-cycloidal-hand": {
+  "alt": "A hand holding the printed cycloidal gearbox housing",
+  "caption": "Cycloidal, because the weight had to come from somewhere.",
+  "h": 991,
+  "sizes": {
+   "1600": {
+    "file": "p06-cycloidal-hand-1600.webp",
+    "h": 991,
+    "w": 1322
+   },
+   "800": {
+    "file": "p06-cycloidal-hand-800.webp",
+    "h": 600,
+    "w": 800
+   }
+  },
+  "w": 1322
+ },
+ "p06-cycloidal-parts": {
+  "alt": "Cycloidal gearbox components laid out on a desk in front of a monitor",
+  "caption": "",
+  "h": 2133,
+  "sizes": {
+   "1600": {
+    "file": "p06-cycloidal-parts-1600.webp",
+    "h": 2133,
+    "w": 1600
+   },
+   "800": {
+    "file": "p06-cycloidal-parts-800.webp",
+    "h": 1067,
+    "w": 800
+   }
+  },
+  "w": 1600
+ },
+ "p06-cycloidal-plate": {
+  "alt": "A hand holding the flat cycloidal output plate with its pins fitted",
+  "caption": "",
+  "h": 2133,
+  "sizes": {
+   "1600": {
+    "file": "p06-cycloidal-plate-1600.webp",
+    "h": 2133,
+    "w": 1600
+   },
+   "800": {
+    "file": "p06-cycloidal-plate-800.webp",
+    "h": 1067,
+    "w": 800
+   }
+  },
+  "w": 1600
+ },
+ "p06-cycloidal-print": {
+  "alt": "Cycloidal gearbox parts fresh off the print bed next to the printer",
+  "caption": "",
+  "h": 517,
+  "sizes": {
+   "1600": {
+    "file": "p06-cycloidal-print-1600.webp",
+    "h": 517,
+    "w": 689
+   },
+   "800": {
+    "file": "p06-cycloidal-print-800.webp",
+    "h": 517,
+    "w": 689
+   }
+  },
+  "w": 689
+ },
+ "p06-driver-wiring": {
+  "alt": "A driver board wired into a loom of colored conductors beside a spool of power cable",
+  "caption": "",
+  "h": 2133,
+  "sizes": {
+   "1600": {
+    "file": "p06-driver-wiring-1600.webp",
+    "h": 2133,
+    "w": 1600
+   },
+   "800": {
+    "file": "p06-driver-wiring-800.webp",
+    "h": 1067,
+    "w": 800
+   }
+  },
+  "w": 1600
+ },
+ "p06-pcb-layout": {
+  "alt": "PCB layout in a CAD tool showing dense routed traces on a two-layer board",
+  "caption": "Board layout for the control electronics.",
+  "h": 1171,
+  "sizes": {
+   "1600": {
+    "file": "p06-pcb-layout-1600.webp",
+    "h": 1171,
+    "w": 1600
+   },
+   "800": {
+    "file": "p06-pcb-layout-800.webp",
+    "h": 585,
+    "w": 800
+   }
+  },
+  "w": 1600
+ },
+ "p07-assembly-strain": {
+  "alt": "The arm's shoulder assembly opened up, showing the drive components under load",
+  "caption": "",
+  "h": 880,
+  "sizes": {
+   "1600": {
+    "file": "p07-assembly-strain-1600.webp",
+    "h": 880,
+    "w": 1173
+   },
+   "800": {
+    "file": "p07-assembly-strain-800.webp",
+    "h": 600,
+    "w": 800
+   }
+  },
+  "w": 1173
+ },
+ "p07-down": {
+  "alt": "The orange arm collapsed on its side with wiring pulled taut",
+  "caption": "It fell over at reach.",
+  "h": 2133,
+  "sizes": {
+   "1600": {
+    "file": "p07-down-1600.webp",
+    "h": 2133,
+    "w": 1600
+   },
+   "800": {
+    "file": "p07-down-800.webp",
+    "h": 1067,
+    "w": 800
+   }
+  },
+  "w": 1600
+ },
+ "p07-power-distribution": {
+  "alt": "Heavy-gauge power distribution wired into the arm base",
+  "caption": "24 V everywhere except the gripper, which stayed at 5 V.",
+  "h": 2133,
+  "sizes": {
+   "1600": {
+    "file": "p07-power-distribution-1600.webp",
+    "h": 2133,
+    "w": 1600
+   },
+   "800": {
+    "file": "p07-power-distribution-800.webp",
+    "h": 1067,
+    "w": 800
+   }
+  },
+  "w": 1600
+ },
+ "p07-power-switch": {
+  "alt": "The arm base with a new power switch and barrel jack fitted during the rewire",
+  "caption": "",
+  "h": 727,
+  "sizes": {
+   "1600": {
+    "file": "p07-power-switch-1600.webp",
+    "h": 727,
+    "w": 969
+   },
+   "800": {
+    "file": "p07-power-switch-800.webp",
+    "h": 600,
+    "w": 800
+   }
+  },
+  "w": 969
+ },
+ "p07-rewire-bench": {
+  "alt": "The rewire in progress: switch, connector and loose conductors on the bench",
+  "caption": "Rewiring the whole system from 5 V to 24 V.",
+  "h": 2133,
+  "sizes": {
+   "1600": {
+    "file": "p07-rewire-bench-1600.webp",
+    "h": 2133,
+    "w": 1600
+   },
+   "800": {
+    "file": "p07-rewire-bench-800.webp",
+    "h": 1067,
+    "w": 800
+   }
+  },
+  "w": 1600
+ },
+ "p08-retired": {
+  "alt": "The retired orange arm sitting on a shelf above the workbench",
+  "caption": "Version One, retired.",
+  "h": 2133,
+  "sizes": {
+   "1600": {
+    "file": "p08-retired-1600.webp",
+    "h": 2133,
+    "w": 1600
+   },
+   "800": {
+    "file": "p08-retired-800.webp",
+    "h": 1067,
+    "w": 800
+   }
+  },
+  "w": 1600
+ },
+ "p09-parol-sim": {
+  "alt": "PAROL commander software showing the stock PAROL6 arm in simulation mode",
+  "caption": "The PAROL6 in simulation, before I changed anything about it.",
+  "h": 2133,
+  "sizes": {
+   "1600": {
+    "file": "p09-parol-sim-1600.webp",
+    "h": 2133,
+    "w": 1600
+   },
+   "800": {
+    "file": "p09-parol-sim-800.webp",
+    "h": 1067,
+    "w": 800
+   }
+  },
+  "w": 1600
+ },
+ "p10-bench": {
+  "alt": "VOLT installed at the workbench beside monitors and a 3D printer",
+  "caption": "The bench it actually lives on.",
+  "h": 2133,
+  "sizes": {
+   "1600": {
+    "file": "p10-bench-1600.webp",
+    "h": 2133,
+    "w": 1600
+   },
+   "800": {
+    "file": "p10-bench-800.webp",
+    "h": 1067,
+    "w": 800
+   }
+  },
+  "w": 1600
+ },
+ "p10-build-1": {
+  "alt": "VOLT partially assembled with its wiring loom being routed through the frame",
+  "caption": "",
+  "h": 1200,
+  "sizes": {
+   "1600": {
+    "file": "p10-build-1-1600.webp",
+    "h": 1200,
+    "w": 1600
+   },
+   "800": {
+    "file": "p10-build-1-800.webp",
+    "h": 600,
+    "w": 800
+   }
+  },
+  "w": 1600
+ },
+ "p10-build-2": {
+  "alt": "A close view of VOLT's yellow printed forearm and wrist assembly",
+  "caption": "",
+  "h": 2208,
+  "sizes": {
+   "1600": {
+    "file": "p10-build-2-1600.webp",
+    "h": 2208,
+    "w": 1242
+   },
+   "800": {
+    "file": "p10-build-2-800.webp",
+    "h": 1422,
+    "w": 800
+   }
+  },
+  "w": 1242
+ },
+ "p10-build-3": {
+  "alt": "VOLT on the desk mid-build with tools and printed parts around it",
+  "caption": "",
+  "h": 1200,
+  "sizes": {
+   "1600": {
+    "file": "p10-build-3-1600.webp",
+    "h": 1200,
+    "w": 1600
+   },
+   "800": {
+    "file": "p10-build-3-800.webp",
+    "h": 600,
+    "w": 800
+   }
+  },
+  "w": 1600
+ },
+ "p10-camera": {
+  "alt": "VOLT with a camera mounted above its wrist, lit blue against a pegboard",
+  "caption": "Camera mounted. This is where it stops being a machine that repeats.",
+  "h": 2133,
+  "sizes": {
+   "1600": {
+    "file": "p10-camera-1600.webp",
+    "h": 2133,
+    "w": 1600
+   },
+   "800": {
+    "file": "p10-camera-800.webp",
+    "h": 1067,
+    "w": 800
+   }
+  },
+  "w": 1600
+ },
+ "p10-closeup": {
+  "alt": "Close view of VOLT's shoulder and upper arm in yellow",
+  "caption": "",
+  "h": 2133,
+  "sizes": {
+   "1600": {
+    "file": "p10-closeup-1600.webp",
+    "h": 2133,
+    "w": 1600
+   },
+   "800": {
+    "file": "p10-closeup-800.webp",
+    "h": 1067,
+    "w": 800
+   }
+  },
+  "w": 1600
+ },
+ "p10-harness": {
+  "alt": "A wiring harness laid out and labelled per joint before installation",
+  "caption": "Every conductor labelled before anything went into the frame.",
+  "h": 1200,
+  "sizes": {
+   "1600": {
+    "file": "p10-harness-1600.webp",
+    "h": 1200,
+    "w": 1600
+   },
+   "800": {
+    "file": "p10-harness-800.webp",
+    "h": 600,
+    "w": 800
+   }
+  },
+  "w": 1600
+ },
+ "p10-software": {
+  "alt": "Robot control software on screen with VOLT in the foreground",
+  "caption": "",
+  "h": 2133,
+  "sizes": {
+   "1600": {
+    "file": "p10-software-1600.webp",
+    "h": 2133,
+    "w": 1600
+   },
+   "800": {
+    "file": "p10-software-800.webp",
+    "h": 1067,
+    "w": 800
+   }
+  },
+  "w": 1600
+ },
+ "p10-volt-full": {
+  "alt": "VOLT standing fully assembled in yellow, its six joints and stepper motors visible",
+  "caption": "VOLT. Version Open Loop Transformer.",
+  "h": 2133,
+  "sizes": {
+   "1600": {
+    "file": "p10-volt-full-1600.webp",
+    "h": 2133,
+    "w": 1600
+   },
+   "800": {
+    "file": "p10-volt-full-800.webp",
+    "h": 1067,
+    "w": 800
+   }
+  },
+  "w": 1600
+ },
+ "p11-fingers": {
+  "alt": "The gripper's white compliant fingers closed around an object",
+  "caption": "The fingers, iterated against real objects.",
+  "h": 1200,
+  "sizes": {
+   "1600": {
+    "file": "p11-fingers-1600.webp",
+    "h": 1200,
+    "w": 1600
+   },
+   "800": {
+    "file": "p11-fingers-800.webp",
+    "h": 600,
+    "w": 800
+   }
+  },
+  "w": 1600
+ },
+ "p11-grasp": {
+  "alt": "The gripper holding a part, fingers closed and loaded",
+  "caption": "",
+  "h": 2133,
+  "sizes": {
+   "1600": {
+    "file": "p11-grasp-1600.webp",
+    "h": 2133,
+    "w": 1600
+   },
+   "800": {
+    "file": "p11-grasp-800.webp",
+    "h": 1067,
+    "w": 800
+   }
+  },
+  "w": 1600
+ },
+ "p11-gripper-board": {
+  "alt": "The assembled gripper control board mounted to its printed carrier",
+  "caption": "",
+  "h": 2133,
+  "sizes": {
+   "1600": {
+    "file": "p11-gripper-board-1600.webp",
+    "h": 2133,
+    "w": 1600
+   },
+   "800": {
+    "file": "p11-gripper-board-800.webp",
+    "h": 1067,
+    "w": 800
+   }
+  },
+  "w": 1600
+ },
+ "p11-gripper-pcb": {
+  "alt": "The gripper's driver PCB wired up on a yellow printed bracket",
+  "caption": "",
+  "h": 1200,
+  "sizes": {
+   "1600": {
+    "file": "p11-gripper-pcb-1600.webp",
+    "h": 1200,
+    "w": 1600
+   },
+   "800": {
+    "file": "p11-gripper-pcb-800.webp",
+    "h": 600,
+    "w": 800
+   }
+  },
+  "w": 1600
+ },
+ "p11-in-use": {
+  "alt": "VOLT using the gripper on the workbench",
+  "caption": "",
+  "h": 1200,
+  "sizes": {
+   "1600": {
+    "file": "p11-in-use-1600.webp",
+    "h": 1200,
+    "w": 1600
+   },
+   "800": {
+    "file": "p11-in-use-800.webp",
+    "h": 600,
+    "w": 800
+   }
+  },
+  "w": 1600
+ },
+ "p11-mounted": {
+  "alt": "The gripper mounted to VOLT's wrist, wired and ready",
+  "caption": "",
+  "h": 1200,
+  "sizes": {
+   "1600": {
+    "file": "p11-mounted-1600.webp",
+    "h": 1200,
+    "w": 1600
+   },
+   "800": {
+    "file": "p11-mounted-800.webp",
+    "h": 600,
+    "w": 800
+   }
+  },
+  "w": 1600
+ },
+ "p11-stepper": {
+  "alt": "The gripper's stepper motor and driver board laid out on the bench",
+  "caption": "",
+  "h": 1200,
+  "sizes": {
+   "1600": {
+    "file": "p11-stepper-1600.webp",
+    "h": 1200,
+    "w": 1600
+   },
+   "800": {
+    "file": "p11-stepper-800.webp",
+    "h": 600,
+    "w": 800
+   }
+  },
+  "w": 1600
+ },
+ "p11-stepper-bench": {
+  "alt": "Stepper motor and control board being fitted during gripper assembly",
+  "caption": "",
+  "h": 2133,
+  "sizes": {
+   "1600": {
+    "file": "p11-stepper-bench-1600.webp",
+    "h": 2133,
+    "w": 1600
+   },
+   "800": {
+    "file": "p11-stepper-bench-800.webp",
+    "h": 1067,
+    "w": 800
+   }
+  },
+  "w": 1600
+ },
+ "p12-machine-1": {
+  "alt": "A desktop machine opened up with its motherboard and power cabling exposed",
+  "caption": "",
+  "h": 1200,
+  "sizes": {
+   "1600": {
+    "file": "p12-machine-1-1600.webp",
+    "h": 1200,
+    "w": 1600
+   },
+   "800": {
+    "file": "p12-machine-1-800.webp",
+    "h": 600,
+    "w": 800
+   }
+  },
+  "w": 1600
+ },
+ "p12-machine-2": {
+  "alt": "A compute node being built on the bench with its components laid out",
+  "caption": "",
+  "h": 1200,
+  "sizes": {
+   "1600": {
+    "file": "p12-machine-2-1600.webp",
+    "h": 1200,
+    "w": 1600
+   },
+   "800": {
+    "file": "p12-machine-2-800.webp",
+    "h": 600,
+    "w": 800
+   }
+  },
+  "w": 1600
+ },
+ "p12-pegboard": {
+  "alt": "Compute hardware mounted to a pegboard above the bench with a cooling fan",
+  "caption": "Local compute. Nothing here calls out to a cloud API.",
+  "h": 906,
+  "sizes": {
+   "1600": {
+    "file": "p12-pegboard-1600.webp",
+    "h": 906,
+    "w": 1600
+   },
+   "800": {
+    "file": "p12-pegboard-800.webp",
+    "h": 453,
+    "w": 800
+   }
+  },
+  "w": 1600
+ },
+ "p13-cluster-bench": {
+  "alt": "Cluster hardware and networking laid out across the workbench",
+  "caption": "",
+  "h": 810,
+  "sizes": {
+   "1600": {
+    "file": "p13-cluster-bench-1600.webp",
+    "h": 810,
+    "w": 1430
+   },
+   "800": {
+    "file": "p13-cluster-bench-800.webp",
+    "h": 453,
+    "w": 800
+   }
+  },
+  "w": 1430
+ },
+ "p13-node": {
+  "alt": "A GPU node's motherboard and power supply cabling during the cluster build",
+  "caption": "One node of the training cluster.",
+  "h": 2133,
+  "sizes": {
+   "1600": {
+    "file": "p13-node-1600.webp",
+    "h": 2133,
+    "w": 1600
+   },
+   "800": {
+    "file": "p13-node-800.webp",
+    "h": 1067,
+    "w": 800
+   }
+  },
+  "w": 1600
+ },
+ "p14-mic-array": {
+  "alt": "A USB six-microphone array and speaker beside the compute hardware",
+  "caption": "Six microphones. Voice in, action out.",
+  "h": 2133,
+  "sizes": {
+   "1600": {
+    "file": "p14-mic-array-1600.webp",
+    "h": 2133,
+    "w": 1600
+   },
+   "800": {
+    "file": "p14-mic-array-800.webp",
+    "h": 1067,
+    "w": 800
+   }
+  },
+  "w": 1600
+ },
+ "p14-volt-laptop": {
+  "alt": "VOLT at the bench with a laptop running its control stack",
+  "caption": "",
+  "h": 2133,
+  "sizes": {
+   "1600": {
+    "file": "p14-volt-laptop-1600.webp",
+    "h": 2133,
+    "w": 1600
+   },
+   "800": {
+    "file": "p14-volt-laptop-800.webp",
+    "h": 1067,
+    "w": 800
+   }
+  },
+  "w": 1600
+ },
+ "p15-fingers-open": {
+  "alt": "The gripper's fingers wide open mid-motion, holding nothing",
+  "caption": "The interesting part is what happens after a miss.",
+  "h": 1200,
+  "sizes": {
+   "1600": {
+    "file": "p15-fingers-open-1600.webp",
+    "h": 1200,
+    "w": 1600
+   },
+   "800": {
+    "file": "p15-fingers-open-800.webp",
+    "h": 600,
+    "w": 800
+   }
+  },
+  "w": 1600
+ },
+ "p15-gripper-closed": {
+  "alt": "A tight view of the gripper closed at the end of a grasp attempt",
+  "caption": "",
+  "h": 2133,
+  "sizes": {
+   "1600": {
+    "file": "p15-gripper-closed-1600.webp",
+    "h": 2133,
+    "w": 1600
+   },
+   "800": {
+    "file": "p15-gripper-closed-800.webp",
+    "h": 1067,
+    "w": 800
+   }
+  },
+  "w": 1600
+ },
+ "p16-accuracy": {
+  "alt": "Bar chart of mean grasp detection accuracy by input modality: depth-only 92.3 percent, RGB-only 91.5 percent, fused RGB-D 90.8 percent, with cross-validation error bars",
+  "caption": "Depth 92.3%, RGB 91.5%, RGB-D 90.8%. Under an identical training budget, no modality difference is statistically significant.",
+  "h": 565,
+  "sizes": {
+   "1600": {
+    "file": "p16-accuracy-1600.webp",
+    "h": 565,
+    "w": 740
+   },
+   "800": {
+    "file": "p16-accuracy-800.webp",
+    "h": 565,
+    "w": 740
+   }
+  },
+  "w": 740
+ },
+ "p16-grasp": {
+  "alt": "Qualitative RGB-D predictions for three objects: the RGB input, the predicted quality, angle and width maps, and the resulting grasp rectangle",
+  "caption": "RGB in, grasp rectangle out.",
+  "h": 905,
+  "sizes": {
+   "1600": {
+    "file": "p16-grasp-1600.webp",
+    "h": 905,
+    "w": 1445
+   },
+   "800": {
+    "file": "p16-grasp-800.webp",
+    "h": 501,
+    "w": 800
+   }
+  },
+  "w": 1445
+ },
+ "p16-paper-cover": {
+  "alt": "First page of the paper: How Much Does Depth Matter? An Input-Modality Ablation Study of Lightweight Convolutional Grasp Detection on the Cornell Grasping Dataset",
+  "caption": "Seven pages, fifteen training runs, every number regenerated by script.",
+  "h": 1430,
+  "sizes": {
+   "1600": {
+    "file": "p16-paper-cover-1600.webp",
+    "h": 1430,
+    "w": 1105
+   },
+   "800": {
+    "file": "p16-paper-cover-800.webp",
+    "h": 1035,
+    "w": 800
+   }
+  },
+  "w": 1105
+ },
+ "p17-beta-bench": {
+  "alt": "PAR6 beta boards spread across the bench beside VOLT",
+  "caption": "",
+  "h": 1073,
+  "sizes": {
+   "1600": {
+    "file": "p17-beta-bench-1600.webp",
+    "h": 1073,
+    "w": 1431
+   },
+   "800": {
+    "file": "p17-beta-bench-800.webp",
+    "h": 600,
+    "w": 800
+   }
+  },
+  "w": 1431
+ },
+ "p17-beta-board": {
+  "alt": "A PAR6 beta control board unpacked on the desk",
+  "caption": "",
+  "h": 2133,
+  "sizes": {
+   "1600": {
+    "file": "p17-beta-board-1600.webp",
+    "h": 2133,
+    "w": 1600
+   },
+   "800": {
+    "file": "p17-beta-board-800.webp",
+    "h": 1067,
+    "w": 800
+   }
+  },
+  "w": 1600
+ },
+ "p17-beta-boards": {
+  "alt": "PAR6 beta kit circuit boards still in their antistatic bags",
+  "caption": "The beta kit, as it arrived.",
+  "h": 1200,
+  "sizes": {
+   "1600": {
+    "file": "p17-beta-boards-1600.webp",
+    "h": 1200,
+    "w": 1600
+   },
+   "800": {
+    "file": "p17-beta-boards-800.webp",
+    "h": 600,
+    "w": 800
+   }
+  },
+  "w": 1600
+ },
+ "p17-beta-volt": {
+  "alt": "The PAR6 beta electronics laid out in front of VOLT",
+  "caption": "",
+  "h": 1200,
+  "sizes": {
+   "1600": {
+    "file": "p17-beta-volt-1600.webp",
+    "h": 1200,
+    "w": 1600
+   },
+   "800": {
+    "file": "p17-beta-volt-800.webp",
+    "h": 600,
+    "w": 800
+   }
+  },
+  "w": 1600
+ },
+ "p18-face-cad": {
+  "alt": "CAD assembly of a humanoid head showing the articulated eye mechanism and its linkages",
+  "caption": "The head. Articulated eyes that actually track.",
+  "h": 1200,
+  "sizes": {
+   "1600": {
+    "file": "p18-face-cad-1600.webp",
+    "h": 1200,
+    "w": 1600
+   },
+   "800": {
+    "file": "p18-face-cad-800.webp",
+    "h": 600,
+    "w": 800
+   }
+  },
+  "w": 1600
+ }
+}

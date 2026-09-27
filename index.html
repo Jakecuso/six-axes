@@ -1,0 +1,678 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>SIX AXES &mdash; Jake C.D. Mancuso</title>
+<meta name="description" content="Building two six-axis robot arms: Version One, which fell over, and VOLT, which runs vision-language-action models on local compute.">
+<meta name="author" content="Jake C.D. Mancuso">
+<meta name="theme-color" content="#0b1622">
+<link rel="canonical" href="https://jakecuso.github.io/six-axes/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SIX AXES &mdash; Building my way into robotics, one failure at a time">
+<meta property="og:description" content="Building two six-axis robot arms: Version One, which fell over, and VOLT, which runs vision-language-action models on local compute.">
+<meta property="og:url" content="https://jakecuso.github.io/six-axes/">
+<meta property="og:image" content="https://jakecuso.github.io/six-axes/assets/img/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="assets/fonts/plex-cond-700.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/plex-sans-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/plex-mono-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/css/site.css">
+<script>document.documentElement.className="js";</script>
+</head>
+<body>
+<a class="skip" href="#phase-01">Skip to Phase 01</a>
+
+<div class="bar" aria-hidden="true"><span class="bar__fill"></span><span class="bar__label"></span></div>
+
+<header class="hero">
+<div class="hero__media">
+<img src="assets/img/p10-volt-full-1600.webp"
+ srcset="assets/img/p10-volt-full-800.webp 800w, assets/img/p10-volt-full-1600.webp 1600w"
+ sizes="100vw" width="1600" height="2133"
+ alt="VOLT standing fully assembled in yellow, its six joints and stepper motors visible" fetchpriority="high" decoding="async">
+</div>
+<div class="hero__inner">
+<h1>SIX AXES</h1>
+<p class="hero__tagline">Building my way into robotics, one failure at a time</p>
+</div>
+<dl class="titleblock">
+<div><dt>Drawn by</dt><dd>Jake C.D. Mancuso</dd></div>
+<div><dt>Practice</dt><dd>Mancuso Intelligence &amp; Defense (MIND) LLC</dd></div>
+<div><dt>Location</dt><dd>Dayton, Ohio</dd></div>
+<div><dt>Sheets</dt><dd>18</dd></div>
+</dl>
+<p class="hero__scroll"><a href="#phase-01">Scroll.</a></p>
+</header>
+
+<nav class="rail" aria-label="Phases">
+<ol>
+<li><a href="#phase-01"><span class="rail__n">01</span><span class="rail__t">The Decision</span></a></li>
+<li><a href="#phase-02"><span class="rail__n">02</span><span class="rail__t">Three Tools, All at Once</span></a></li>
+<li><a href="#phase-03"><span class="rail__n">03</span><span class="rail__t">Why Six Degrees of Freedom</span></a></li>
+<li><a href="#phase-04"><span class="rail__n">04</span><span class="rail__t">Inverse Kinematics First</span></a></li>
+<li><a href="#phase-05"><span class="rail__n">05</span><span class="rail__t">Version One</span></a></li>
+<li><a href="#phase-06"><span class="rail__n">06</span><span class="rail__t">Closing the Loop, Alone</span></a></li>
+<li><a href="#phase-07"><span class="rail__n">07</span><span class="rail__t">What Broke</span></a></li>
+<li><a href="#phase-08"><span class="rail__n">08</span><span class="rail__t">What Version One Taught Me</span></a></li>
+<li><a href="#phase-09"><span class="rail__n">09</span><span class="rail__t">PAROL6 and Source Robotics</span></a></li>
+<li><a href="#phase-10"><span class="rail__n">10</span><span class="rail__t">VOLT</span></a></li>
+<li><a href="#phase-11"><span class="rail__n">11</span><span class="rail__t">The Gripper</span></a></li>
+<li><a href="#phase-12"><span class="rail__n">12</span><span class="rail__t">The Brain, Part One</span></a></li>
+<li><a href="#phase-13"><span class="rail__n">13</span><span class="rail__t">The Brain, Part Two</span></a></li>
+<li><a href="#phase-14"><span class="rail__n">14</span><span class="rail__t">Talk to It</span></a></li>
+<li><a href="#phase-15"><span class="rail__n">15</span><span class="rail__t">When It Misses</span></a></li>
+<li><a href="#phase-16"><span class="rail__n">16</span><span class="rail__t">The Paper: RGB Over LiDAR</span></a></li>
+<li><a href="#phase-17"><span class="rail__n">17</span><span class="rail__t">Selected</span></a></li>
+<li><a href="#phase-18"><span class="rail__n">18</span><span class="rail__t">Now: Humanoids</span></a></li>
+</ol>
+</nav>
+
+<main id="main">
+<section id="phase-01" class="phase" aria-labelledby="h-01">
+<div class="phase__head">
+<p class="phase__num"><span class="phase__word">Phase</span> 01</p>
+<h2 id="h-01">The Decision</h2>
+<p class="phase__summary">I didn&#39;t buy a robot arm. I decided to build one, before I knew how.</p>
+</div>
+<div class="phase__body">
+<p>I wanted a machine that could pick something up and put it somewhere else. That sounds simple until you try it. A six-axis arm is a physics problem, a controls problem, a manufacturing problem, and a software problem stacked on top of each other, and I had no formal robotics training.</p>
+<p>So I started where everyone starts. A sketch, a parts list I didn&#39;t understand yet, and a lot of tabs open.</p>
+<p>It didn&#39;t have a name yet. It barely had a shape.</p>
+<figure class="shot shot--lead">
+<div class="shot__frame"><img src="assets/img/p01-version-one-bench-1600.webp" srcset="assets/img/p01-version-one-bench-800.webp 800w, assets/img/p01-version-one-bench-1600.webp 1600w" sizes="(max-width: 1000px) 100vw, 640px"
+ width="1600" height="1200" alt="The orange Version One arm folded on a desk beside a 3D printer"
+ loading="lazy" decoding="async"></div>
+<figcaption>The orange one, built first.</figcaption>
+</figure>
+<figure class="shot">
+<div class="shot__frame"><img src="assets/img/p01-slicer-arctos-1600.webp" srcset="assets/img/p01-slicer-arctos-800.webp 800w, assets/img/p01-slicer-arctos-1600.webp 1600w" sizes="(max-width: 1000px) 100vw, 640px"
+ width="1600" height="2133" alt="Slicer software showing the six-axis arm model queued for printing"
+ loading="lazy" decoding="async"></div>
+<figcaption>611 x 299 x 631 mm of parts, before any of it existed.</figcaption>
+</figure>
+</div>
+</section>
+
+<section id="phase-02" class="phase" aria-labelledby="h-02">
+<div class="phase__head">
+<p class="phase__num"><span class="phase__word">Phase</span> 02</p>
+<h2 id="h-02">Three Tools, All at Once</h2>
+<p class="phase__summary">Fusion 360, MATLAB, Blender. Learned in parallel, because the problem needed all three.</p>
+</div>
+<div class="phase__body">
+<p>Fusion 360 for the parts. MATLAB for the kinematics math. Blender for seeing the motion before I committed to printing anything.</p>
+<p>I learned each one badly at first, then well enough. That&#39;s the honest version. What made it work was that I wasn&#39;t learning them for their own sake. Every tool was pointed at the same question: where is the hand, and how do I get it there?</p>
+<figure class="shot shot--lead">
+<div class="shot__frame"><img src="assets/img/p02-fusion-arm-1600.webp" srcset="assets/img/p02-fusion-arm-800.webp 800w, assets/img/p02-fusion-arm-1600.webp 1600w" sizes="(max-width: 1000px) 100vw, 640px"
+ width="1600" height="1200" alt="Fusion 360 with the full six-axis arm assembly on screen"
+ loading="lazy" decoding="async"></div>
+<figcaption>Fusion 360. The whole arm, before a single part was printed.</figcaption>
+</figure>
+<figure class="shot">
+<div class="shot__frame"><img src="assets/img/p02-circuit-sim-1600.webp" srcset="assets/img/p02-circuit-sim-800.webp 800w, assets/img/p02-circuit-sim-1600.webp 1600w" sizes="(max-width: 1000px) 100vw, 640px"
+ width="1600" height="1200" alt="Browser-based circuit simulator wiring up joint driver boards and displays"
+ loading="lazy" decoding="async"></div>
+<figcaption>Simulating the driver wiring before committing to it.</figcaption>
+</figure>
+</div>
+</section>
+
+<section id="phase-03" class="phase" aria-labelledby="h-03">
+<div class="phase__head">
+<p class="phase__num"><span class="phase__word">Phase</span> 03</p>
+<h2 id="h-03">Why Six Degrees of Freedom</h2>
+<p class="phase__summary">Fewer axes are easier. Six is the number that lets you reach any point at any angle.</p>
+</div>
+<div class="phase__body">
+<p>With three or four axes you can get the gripper to a position. With six, you can get it there in a specific orientation, which is the difference between reaching a bolt and actually turning it.</p>
+<p>Six is also where the math stops being friendly. That tradeoff is the entire reason the rest of this page exists.</p>
+<figure class="shot shot--lead">
+<div class="shot__frame"><img src="assets/img/p03-cad-cutaway-1600.webp"
+ width="272" height="141" alt="Cutaway CAD render of the arm showing the internals of every joint"
+ loading="lazy" decoding="async"></div>
+<figcaption>Six joints, sectioned. Each one is a place the math can go wrong.</figcaption>
+</figure>
+</div>
+</section>
+
+<section id="phase-04" class="phase" aria-labelledby="h-04">
+<div class="phase__head">
+<p class="phase__num"><span class="phase__word">Phase</span> 04</p>
+<h2 id="h-04">Inverse Kinematics First</h2>
+<p class="phase__summary">I solved the math before I designed the metal, on purpose.</p>
+</div>
+<div class="phase__body">
+<p>Forward kinematics asks: if I set all six joints to these angles, where does the hand end up? Inverse kinematics asks the harder question in reverse: I want the hand here, so what does every joint need to do?</p>
+<p>That second question has multiple valid answers, sometimes none, and it gets worse near the edges of the arm&#39;s reach. I built the solver in MATLAB first and let the results drive the physical design instead of the other way around. Link lengths, joint limits, and the shape of the reachable workspace all came out of the math.</p>
+<p>That decision was right. The execution was where I got in trouble.</p>
+<figure class="shot shot--lead">
+<div class="shot__frame"><img src="assets/img/p04-dh-table-1600.webp"
+ width="580" height="156" alt="Modified DH parameter table listing all six frames with their link lengths, twists, offsets and joint variables, from J1 base rotation to J6 wrist roll"
+ loading="lazy" decoding="async"></div>
+<figcaption>The table the whole arm came out of. Six frames, J1 base rotation through J6 wrist roll.</figcaption>
+</figure>
+<figure class="shot">
+<div class="shot__frame"><img src="assets/img/p04-frames-1600.webp"
+ width="580" height="300" alt="Spatial frame visualization showing coordinate triads at each joint along the kinematic chain, with the forward kinematics position vector drawn in green"
+ loading="lazy" decoding="async"></div>
+<figcaption>Each joint&#39;s coordinate triad, and the position vector that falls out of composing all six transforms.</figcaption>
+</figure>
+</div>
+</section>
+<aside class="pull"><blockquote><p>I wanted the arm to be a consequence of the math, not a container for it.</p></blockquote></aside>
+
+<section id="phase-05" class="phase" aria-labelledby="h-05">
+<div class="phase__head">
+<p class="phase__num"><span class="phase__word">Phase</span> 05</p>
+<h2 id="h-05">Version One</h2>
+<p class="phase__summary">Orange, six axes, unnamed. My first real arm.</p>
+</div>
+<div class="phase__body">
+<p>Version One was printed, wired, and assembled on my own bench. I pulled CAN bus wiring patterns from the open-source robot arm community and learned how the separate operating modes worked by reading their forums and asking questions. That community taught me more about motor control in a month than any datasheet did.</p>
+<p>I never gave it a proper name. It was just the orange one. Version One.</p>
+<p>And it worked. It moved, it reached, it picked things up.</p>
+<div class="gallery"><figure class="shot">
+<div class="shot__frame"><img src="assets/img/p05-mounted-1600.webp" srcset="assets/img/p05-mounted-800.webp 800w, assets/img/p05-mounted-1600.webp 1600w" sizes="(max-width: 1000px) 100vw, 640px"
+ width="1600" height="2133" alt="The orange arm mounted above a 3D printer, fully assembled"
+ loading="lazy" decoding="async"></div>
+<figcaption>Version One, assembled and moving.</figcaption>
+</figure>
+<figure class="shot">
+<div class="shot__frame"><img src="assets/img/p05-standing-1600.webp" srcset="assets/img/p05-standing-800.webp 800w, assets/img/p05-standing-1600.webp 1600w" sizes="(max-width: 1000px) 100vw, 640px"
+ width="1600" height="2133" alt="The orange Version One arm standing assembled on a desk"
+ loading="lazy" decoding="async"></div>
+</figure>
+<figure class="shot">
+<div class="shot__frame"><img src="assets/img/p05-joint-motor-1600.webp" srcset="assets/img/p05-joint-motor-800.webp 800w, assets/img/p05-joint-motor-1600.webp 1461w" sizes="(max-width: 1000px) 100vw, 640px"
+ width="1461" height="1096" alt="Close-up of an orange printed joint with its motor and belt drive"
+ loading="lazy" decoding="async"></div>
+</figure>
+<figure class="shot">
+<div class="shot__frame"><img src="assets/img/p05-arm-bench-1600.webp" srcset="assets/img/p05-arm-bench-800.webp 800w, assets/img/p05-arm-bench-1600.webp 1466w" sizes="(max-width: 1000px) 100vw, 640px"
+ width="1466" height="1100" alt="The orange arm laid out on a bench with its wiring exposed"
+ loading="lazy" decoding="async"></div>
+</figure>
+<figure class="shot">
+<div class="shot__frame"><img src="assets/img/p05-base-driver-1600.webp" srcset="assets/img/p05-base-driver-800.webp 800w, assets/img/p05-base-driver-1600.webp 1600w" sizes="(max-width: 1000px) 100vw, 640px"
+ width="1600" height="2133" alt="The orange arm base opened up with a driver board and wiring harness inside"
+ loading="lazy" decoding="async"></div>
+</figure>
+<figure class="shot">
+<div class="shot__frame"><img src="assets/img/p05-can-sim-1600.webp" srcset="assets/img/p05-can-sim-800.webp 800w, assets/img/p05-can-sim-1600.webp 1600w" sizes="(max-width: 1000px) 100vw, 640px"
+ width="1600" height="2133" alt="CAN bus simulation in a browser showing three joint nodes with their hex IDs"
+ loading="lazy" decoding="async"></div>
+<figcaption>Joint Z 0x03, Joint A 0x04, Joint B 0x05. Learning CAN addressing before wiring it.</figcaption>
+</figure></div>
+</div>
+</section>
+
+<section id="phase-06" class="phase" aria-labelledby="h-06">
+<div class="phase__head">
+<p class="phase__num"><span class="phase__word">Phase</span> 06</p>
+<h2 id="h-06">Closing the Loop, Alone</h2>
+<p class="phase__summary">I built my own closed-loop control system from scratch, using open-source projects as reference.</p>
+</div>
+<div class="phase__body">
+<p>Open loop means the arm commands a position and hopes. Closed loop means it measures where it actually is and corrects. I wanted the second one, so I built it, leaning on open-source robotics projects to check my assumptions and sanity-check my approach.</p>
+<p>I designed a cycloidal gearbox of my own for the joints, to get the reduction I needed without carrying the weight a conventional gearbox would have cost me.</p>
+<p>It was the most ambitious thing I&#39;d attempted and the place where every small error I&#39;d made upstream finally showed up.</p>
+<div class="gallery"><figure class="shot">
+<div class="shot__frame"><img src="assets/img/p06-pcb-layout-1600.webp" srcset="assets/img/p06-pcb-layout-800.webp 800w, assets/img/p06-pcb-layout-1600.webp 1600w" sizes="(max-width: 1000px) 100vw, 640px"
+ width="1600" height="1171" alt="PCB layout in a CAD tool showing dense routed traces on a two-layer board"
+ loading="lazy" decoding="async"></div>
+<figcaption>Board layout for the control electronics.</figcaption>
+</figure>
+<figure class="shot">
+<div class="shot__frame"><img src="assets/img/p06-base-boards-1600.webp" srcset="assets/img/p06-base-boards-800.webp 800w, assets/img/p06-base-boards-1600.webp 1600w" sizes="(max-width: 1000px) 100vw, 640px"
+ width="1600" height="2133" alt="The arm base with control boards and colored wiring mounted inside"
+ loading="lazy" decoding="async"></div>
+</figure>
+<figure class="shot">
+<div class="shot__frame"><img src="assets/img/p06-driver-wiring-1600.webp" srcset="assets/img/p06-driver-wiring-800.webp 800w, assets/img/p06-driver-wiring-1600.webp 1600w" sizes="(max-width: 1000px) 100vw, 640px"
+ width="1600" height="2133" alt="A driver board wired into a loom of colored conductors beside a spool of power cable"
+ loading="lazy" decoding="async"></div>
+</figure>
+<figure class="shot">
+<div class="shot__frame"><img src="assets/img/p06-cycloidal-disc-1600.webp" srcset="assets/img/p06-cycloidal-disc-800.webp 800w, assets/img/p06-cycloidal-disc-1600.webp 1600w" sizes="(max-width: 1000px) 100vw, 640px"
+ width="1600" height="1200" alt="A printed cycloidal gearbox assembly with its pin ring exposed"
+ loading="lazy" decoding="async"></div>
+<figcaption>The cycloidal gearbox, assembled.</figcaption>
+</figure>
+<figure class="shot">
+<div class="shot__frame"><img src="assets/img/p06-cycloidal-print-1600.webp"
+ width="689" height="517" alt="Cycloidal gearbox parts fresh off the print bed next to the printer"
+ loading="lazy" decoding="async"></div>
+</figure>
+<figure class="shot">
+<div class="shot__frame"><img src="assets/img/p06-cycloidal-hand-1600.webp" srcset="assets/img/p06-cycloidal-hand-800.webp 800w, assets/img/p06-cycloidal-hand-1600.webp 1322w" sizes="(max-width: 1000px) 100vw, 640px"
+ width="1322" height="991" alt="A hand holding the printed cycloidal gearbox housing"
+ loading="lazy" decoding="async"></div>
+<figcaption>Cycloidal, because the weight had to come from somewhere.</figcaption>
+</figure>
+<figure class="shot">
+<div class="shot__frame"><img src="assets/img/p06-cycloidal-plate-1600.webp" srcset="assets/img/p06-cycloidal-plate-800.webp 800w, assets/img/p06-cycloidal-plate-1600.webp 1600w" sizes="(max-width: 1000px) 100vw, 640px"
+ width="1600" height="2133" alt="A hand holding the flat cycloidal output plate with its pins fitted"
+ loading="lazy" decoding="async"></div>
+</figure>
+<figure class="shot">
+<div class="shot__frame"><img src="assets/img/p06-cycloidal-parts-1600.webp" srcset="assets/img/p06-cycloidal-parts-800.webp 800w, assets/img/p06-cycloidal-parts-1600.webp 1600w" sizes="(max-width: 1000px) 100vw, 640px"
+ width="1600" height="2133" alt="Cycloidal gearbox components laid out on a desk in front of a monitor"
+ loading="lazy" decoding="async"></div>
+</figure></div>
+</div>
+</section>
+
+<section id="phase-07" class="phase phase--redline" aria-labelledby="h-07">
+<div class="phase__head">
+<p class="phase__num"><span class="phase__word">Phase</span> 07</p>
+<h2 id="h-07">What Broke</h2>
+<p class="phase__summary">It tipped over. Then I found out why.</p>
+</div>
+<div class="phase__body">
+<p>The failure list, in order of how much it cost me:</p>
+<ol class="findings"><li>Positioning drifted by quadrant. Accuracy was acceptable in one region of the workspace and noticeably off in another. That&#39;s the signature of an IK error, not a hardware error.</li><li>The gripper was wrong for the payload. I sized it for the objects I imagined instead of the objects I had.</li><li>Materials were under sustained strain. Parts that were fine at rest were not fine holding a load at extension.</li><li>It fell over at reach. Push the arm too far out and the center of mass left the base. That&#39;s not subtle. That&#39;s the whole machine on the floor.</li></ol>
+<p>The root cause was small. My inverse kinematics were off by a fraction. At the shoulder that&#39;s invisible. At full extension it compounds into a real distance, and a real moment arm, and then gravity does the rest.</p>
+<p>The hall sensors were part of it too. They needed to be positioned to within ±0.01 mm to read correctly, and at that tolerance there is no such thing as close enough.</p>
+<p>Fixing it meant rewiring the whole system from 5 V to 24 V while keeping the gripper on 5 V.</p>
+<div class="gallery"><figure class="shot">
+<div class="shot__frame"><img src="assets/img/p07-down-1600.webp" srcset="assets/img/p07-down-800.webp 800w, assets/img/p07-down-1600.webp 1600w" sizes="(max-width: 1000px) 100vw, 640px"
+ width="1600" height="2133" alt="The orange arm collapsed on its side with wiring pulled taut"
+ loading="lazy" decoding="async"></div>
+<figcaption>It fell over at reach.</figcaption>
+</figure>
+<figure class="shot">
+<div class="shot__frame"><img src="assets/img/p07-assembly-strain-1600.webp" srcset="assets/img/p07-assembly-strain-800.webp 800w, assets/img/p07-assembly-strain-1600.webp 1173w" sizes="(max-width: 1000px) 100vw, 640px"
+ width="1173" height="880" alt="The arm&#39;s shoulder assembly opened up, showing the drive components under load"
+ loading="lazy" decoding="async"></div>
+</figure>
+<figure class="shot">
+<div class="shot__frame"><img src="assets/img/p07-power-switch-1600.webp" srcset="assets/img/p07-power-switch-800.webp 800w, assets/img/p07-power-switch-1600.webp 969w" sizes="(max-width: 1000px) 100vw, 640px"
+ width="969" height="727" alt="The arm base with a new power switch and barrel jack fitted during the rewire"
+ loading="lazy" decoding="async"></div>
+</figure>
+<figure class="shot">
+<div class="shot__frame"><img src="assets/img/p07-rewire-bench-1600.webp" srcset="assets/img/p07-rewire-bench-800.webp 800w, assets/img/p07-rewire-bench-1600.webp 1600w" sizes="(max-width: 1000px) 100vw, 640px"
+ width="1600" height="2133" alt="The rewire in progress: switch, connector and loose conductors on the bench"
+ loading="lazy" decoding="async"></div>
+<figcaption>Rewiring the whole system from 5 V to 24 V.</figcaption>
+</figure>
+<figure class="shot">
+<div class="shot__frame"><img src="assets/img/p07-power-distribution-1600.webp" srcset="assets/img/p07-power-distribution-800.webp 800w, assets/img/p07-power-distribution-1600.webp 1600w" sizes="(max-width: 1000px) 100vw, 640px"
+ width="1600" height="2133" alt="Heavy-gauge power distribution wired into the arm base"
+ loading="lazy" decoding="async"></div>
+<figcaption>24 V everywhere except the gripper, which stayed at 5 V.</figcaption>
+</figure></div>
+</div>
+</section>
+<aside class="pull"><blockquote><p>A small error in the math became a large error in the world. That&#39;s the lesson, and I only learned it by watching it fall.</p></blockquote></aside>
+
+<section id="phase-08" class="phase" aria-labelledby="h-08">
+<div class="phase__head">
+<p class="phase__num"><span class="phase__word">Phase</span> 08</p>
+<h2 id="h-08">What Version One Taught Me</h2>
+<p class="phase__summary">Four lessons, one per failure.</p>
+</div>
+<div class="phase__body">
+<ol class="findings"><li>Verify the solver against the physical arm across the entire workspace, not just the easy middle.</li><li>Design the gripper for the actual objects, measured, not imagined.</li><li>Material selection is a load calculation, not a preference.</li><li>Reach is a stability budget. Every millimeter out costs you.</li></ol>
+<p>Version One did its job. It just did it by failing.</p>
+<figure class="shot shot--lead">
+<div class="shot__frame"><img src="assets/img/p08-retired-1600.webp" srcset="assets/img/p08-retired-800.webp 800w, assets/img/p08-retired-1600.webp 1600w" sizes="(max-width: 1000px) 100vw, 640px"
+ width="1600" height="2133" alt="The retired orange arm sitting on a shelf above the workbench"
+ loading="lazy" decoding="async"></div>
+<figcaption>Version One, retired.</figcaption>
+</figure>
+</div>
+</section>
+
+<section id="phase-09" class="phase" aria-labelledby="h-09">
+<div class="phase__head">
+<p class="phase__num"><span class="phase__word">Phase</span> 09</p>
+<h2 id="h-09">PAROL6 and Source Robotics</h2>
+<p class="phase__summary">I stopped designing in isolation and started building on a proven platform.</p>
+</div>
+<div class="phase__body">
+<p><a href="https://source-robotics.com/" target="_blank" rel="noopener">Source Robotics</a> builds the <a href="https://source-robotics.com/products/parol6-robotic-arm" target="_blank" rel="noopener">PAROL6</a>, an open-loop six-axis arm with a real community behind it. The <a href="https://github.com/Source-Robotics/PAROL6-Desktop-robot-arm" target="_blank" rel="noopener">mechanical files and control software are open</a>, and there are <a href="https://source-robotics.github.io/PAROL-docs/" target="_blank" rel="noopener">proper docs</a>. Building someone else&#39;s well-engineered design after failing at my own was the fastest education I&#39;ve had.</p>
+<p>I didn&#39;t want to just assemble a kit, though. I wanted to find out what I could add.</p>
+<figure class="shot shot--lead">
+<div class="shot__frame"><img src="assets/img/p09-parol-sim-1600.webp" srcset="assets/img/p09-parol-sim-800.webp 800w, assets/img/p09-parol-sim-1600.webp 1600w" sizes="(max-width: 1000px) 100vw, 640px"
+ width="1600" height="2133" alt="PAROL commander software showing the stock PAROL6 arm in simulation mode"
+ loading="lazy" decoding="async"></div>
+<figcaption>The PAROL6 in simulation, before I changed anything about it.</figcaption>
+</figure>
+</div>
+</section>
+
+<section id="phase-10" class="phase" aria-labelledby="h-10">
+<div class="phase__head">
+<p class="phase__num"><span class="phase__word">Phase</span> 10</p>
+<h2 id="h-10">VOLT</h2>
+<p class="phase__summary">My PAROL6 build, modified. Version Open Loop Transformer.</p>
+</div>
+<div class="phase__body">
+<p>VOLT is what the PAROL6 became once I was done with it. Custom parts, my own additions, and eventually a full local AI stack that the base design never assumed.</p>
+<p>Naming it mattered more than I expected. Version One never got a name and never quite became a thing. VOLT did.</p>
+<div class="gallery"><figure class="shot">
+<div class="shot__frame"><img src="assets/img/p10-bench-1600.webp" srcset="assets/img/p10-bench-800.webp 800w, assets/img/p10-bench-1600.webp 1600w" sizes="(max-width: 1000px) 100vw, 640px"
+ width="1600" height="2133" alt="VOLT installed at the workbench beside monitors and a 3D printer"
+ loading="lazy" decoding="async"></div>
+<figcaption>The bench it actually lives on.</figcaption>
+</figure>
+<figure class="shot">
+<div class="shot__frame"><img src="assets/img/p10-build-1-1600.webp" srcset="assets/img/p10-build-1-800.webp 800w, assets/img/p10-build-1-1600.webp 1600w" sizes="(max-width: 1000px) 100vw, 640px"
+ width="1600" height="1200" alt="VOLT partially assembled with its wiring loom being routed through the frame"
+ loading="lazy" decoding="async"></div>
+</figure>
+<figure class="shot">
+<div class="shot__frame"><img src="assets/img/p10-build-2-1600.webp" srcset="assets/img/p10-build-2-800.webp 800w, assets/img/p10-build-2-1600.webp 1242w" sizes="(max-width: 1000px) 100vw, 640px"
+ width="1242" height="2208" alt="A close view of VOLT&#39;s yellow printed forearm and wrist assembly"
+ loading="lazy" decoding="async"></div>
+</figure>
+<figure class="shot">
+<div class="shot__frame"><img src="assets/img/p10-harness-1600.webp" srcset="assets/img/p10-harness-800.webp 800w, assets/img/p10-harness-1600.webp 1600w" sizes="(max-width: 1000px) 100vw, 640px"
+ width="1600" height="1200" alt="A wiring harness laid out and labelled per joint before installation"
+ loading="lazy" decoding="async"></div>
+<figcaption>Every conductor labelled before anything went into the frame.</figcaption>
+</figure>
+<figure class="shot">
+<div class="shot__frame"><img src="assets/img/p10-build-3-1600.webp" srcset="assets/img/p10-build-3-800.webp 800w, assets/img/p10-build-3-1600.webp 1600w" sizes="(max-width: 1000px) 100vw, 640px"
+ width="1600" height="1200" alt="VOLT on the desk mid-build with tools and printed parts around it"
+ loading="lazy" decoding="async"></div>
+</figure>
+<figure class="shot">
+<div class="shot__frame"><img src="assets/img/p10-camera-1600.webp" srcset="assets/img/p10-camera-800.webp 800w, assets/img/p10-camera-1600.webp 1600w" sizes="(max-width: 1000px) 100vw, 640px"
+ width="1600" height="2133" alt="VOLT with a camera mounted above its wrist, lit blue against a pegboard"
+ loading="lazy" decoding="async"></div>
+<figcaption>Camera mounted. This is where it stops being a machine that repeats.</figcaption>
+</figure>
+<figure class="shot">
+<div class="shot__frame"><img src="assets/img/p10-closeup-1600.webp" srcset="assets/img/p10-closeup-800.webp 800w, assets/img/p10-closeup-1600.webp 1600w" sizes="(max-width: 1000px) 100vw, 640px"
+ width="1600" height="2133" alt="Close view of VOLT&#39;s shoulder and upper arm in yellow"
+ loading="lazy" decoding="async"></div>
+</figure>
+<figure class="shot">
+<div class="shot__frame"><img src="assets/img/p10-software-1600.webp" srcset="assets/img/p10-software-800.webp 800w, assets/img/p10-software-1600.webp 1600w" sizes="(max-width: 1000px) 100vw, 640px"
+ width="1600" height="2133" alt="Robot control software on screen with VOLT in the foreground"
+ loading="lazy" decoding="async"></div>
+</figure></div>
+</div>
+</section>
+
+<section id="phase-11" class="phase" aria-labelledby="h-11">
+<div class="phase__head">
+<p class="phase__num"><span class="phase__word">Phase</span> 11</p>
+<h2 id="h-11">The Gripper</h2>
+<p class="phase__summary">I designed the gripper for the PAROL6. It&#39;s now a product you can buy.</p>
+</div>
+<div class="phase__body">
+<p>The gripper was the part I got most wrong on Version One, so it&#39;s the part I went hardest at. I designed the PAROL6 gripper, iterated it against real objects and real failure modes, and it&#39;s now <a href="https://source-robotics.com/products/msg-gripper" target="_blank" rel="noopener">being sold to other builders</a>.</p>
+<p>Going from “my gripper broke” to “my gripper ships” is the single clearest measure of what changed between Phase 07 and here.</p>
+<div class="gallery"><figure class="shot">
+<div class="shot__frame"><img src="assets/img/p11-fingers-1600.webp" srcset="assets/img/p11-fingers-800.webp 800w, assets/img/p11-fingers-1600.webp 1600w" sizes="(max-width: 1000px) 100vw, 640px"
+ width="1600" height="1200" alt="The gripper&#39;s white compliant fingers closed around an object"
+ loading="lazy" decoding="async"></div>
+<figcaption>The fingers, iterated against real objects.</figcaption>
+</figure>
+<figure class="shot">
+<div class="shot__frame"><img src="assets/img/p11-grasp-1600.webp" srcset="assets/img/p11-grasp-800.webp 800w, assets/img/p11-grasp-1600.webp 1600w" sizes="(max-width: 1000px) 100vw, 640px"
+ width="1600" height="2133" alt="The gripper holding a part, fingers closed and loaded"
+ loading="lazy" decoding="async"></div>
+</figure>
+<figure class="shot">
+<div class="shot__frame"><img src="assets/img/p11-mounted-1600.webp" srcset="assets/img/p11-mounted-800.webp 800w, assets/img/p11-mounted-1600.webp 1600w" sizes="(max-width: 1000px) 100vw, 640px"
+ width="1600" height="1200" alt="The gripper mounted to VOLT&#39;s wrist, wired and ready"
+ loading="lazy" decoding="async"></div>
+</figure>
+<figure class="shot">
+<div class="shot__frame"><img src="assets/img/p11-in-use-1600.webp" srcset="assets/img/p11-in-use-800.webp 800w, assets/img/p11-in-use-1600.webp 1600w" sizes="(max-width: 1000px) 100vw, 640px"
+ width="1600" height="1200" alt="VOLT using the gripper on the workbench"
+ loading="lazy" decoding="async"></div>
+</figure>
+<figure class="shot">
+<div class="shot__frame"><img src="assets/img/p11-gripper-board-1600.webp" srcset="assets/img/p11-gripper-board-800.webp 800w, assets/img/p11-gripper-board-1600.webp 1600w" sizes="(max-width: 1000px) 100vw, 640px"
+ width="1600" height="2133" alt="The assembled gripper control board mounted to its printed carrier"
+ loading="lazy" decoding="async"></div>
+</figure>
+<figure class="shot">
+<div class="shot__frame"><img src="assets/img/p11-gripper-pcb-1600.webp" srcset="assets/img/p11-gripper-pcb-800.webp 800w, assets/img/p11-gripper-pcb-1600.webp 1600w" sizes="(max-width: 1000px) 100vw, 640px"
+ width="1600" height="1200" alt="The gripper&#39;s driver PCB wired up on a yellow printed bracket"
+ loading="lazy" decoding="async"></div>
+</figure>
+<figure class="shot">
+<div class="shot__frame"><img src="assets/img/p11-stepper-1600.webp" srcset="assets/img/p11-stepper-800.webp 800w, assets/img/p11-stepper-1600.webp 1600w" sizes="(max-width: 1000px) 100vw, 640px"
+ width="1600" height="1200" alt="The gripper&#39;s stepper motor and driver board laid out on the bench"
+ loading="lazy" decoding="async"></div>
+</figure>
+<figure class="shot">
+<div class="shot__frame"><img src="assets/img/p11-stepper-bench-1600.webp" srcset="assets/img/p11-stepper-bench-800.webp 800w, assets/img/p11-stepper-bench-1600.webp 1600w" sizes="(max-width: 1000px) 100vw, 640px"
+ width="1600" height="2133" alt="Stepper motor and control board being fitted during gripper assembly"
+ loading="lazy" decoding="async"></div>
+</figure></div>
+</div>
+</section>
+<aside class="pull"><blockquote><p>The component that failed hardest on my first arm is the one I now sell.</p></blockquote></aside>
+
+<section id="phase-12" class="phase" aria-labelledby="h-12">
+<div class="phase__head">
+<p class="phase__num"><span class="phase__word">Phase</span> 12</p>
+<h2 id="h-12">The Brain, Part One</h2>
+<p class="phase__summary">Local compute. Pi, Jetson, ROS2, and deliberately without ROS2.</p>
+</div>
+<div class="phase__body">
+<p>I ran VOLT&#39;s intelligence stack three ways on purpose.</p>
+<p>On a Raspberry Pi, to see how far minimal compute could go. On a Jetson Nano, for onboard inference with real headroom. With ROS2 for the standard robotics middleware, and without ROS2, direct, to understand what the middleware was actually doing for me and what it was costing.</p>
+<p>The controllers I wrote for it are open: <a href="https://github.com/Jakecuso/parol6-controller" target="_blank" rel="noopener">parol6-controller</a> runs headless on a Pi as a self-hosted web controller, and <a href="https://github.com/Jakecuso/parol6-cockpit" target="_blank" rel="noopener">parol6-cockpit</a> is the phone-first version, with thumb joysticks and a deadman-guarded jog.</p>
+<p>Nothing here depends on a cloud API. If my internet dies, VOLT still works.</p>
+<div class="gallery"><figure class="shot">
+<div class="shot__frame"><img src="assets/img/p12-pegboard-1600.webp" srcset="assets/img/p12-pegboard-800.webp 800w, assets/img/p12-pegboard-1600.webp 1600w" sizes="(max-width: 1000px) 100vw, 640px"
+ width="1600" height="906" alt="Compute hardware mounted to a pegboard above the bench with a cooling fan"
+ loading="lazy" decoding="async"></div>
+<figcaption>Local compute. Nothing here calls out to a cloud API.</figcaption>
+</figure>
+<figure class="shot">
+<div class="shot__frame"><img src="assets/img/p12-machine-1-1600.webp" srcset="assets/img/p12-machine-1-800.webp 800w, assets/img/p12-machine-1-1600.webp 1600w" sizes="(max-width: 1000px) 100vw, 640px"
+ width="1600" height="1200" alt="A desktop machine opened up with its motherboard and power cabling exposed"
+ loading="lazy" decoding="async"></div>
+</figure>
+<figure class="shot">
+<div class="shot__frame"><img src="assets/img/p12-machine-2-1600.webp" srcset="assets/img/p12-machine-2-800.webp 800w, assets/img/p12-machine-2-1600.webp 1600w" sizes="(max-width: 1000px) 100vw, 640px"
+ width="1600" height="1200" alt="A compute node being built on the bench with its components laid out"
+ loading="lazy" decoding="async"></div>
+</figure></div>
+</div>
+</section>
+
+<section id="phase-13" class="phase" aria-labelledby="h-13">
+<div class="phase__head">
+<p class="phase__num"><span class="phase__word">Phase</span> 13</p>
+<h2 id="h-13">The Brain, Part Two</h2>
+<p class="phase__summary">Vision-Language-Action models, LeRobot, and a distributed GPU cluster for training.</p>
+</div>
+<div class="phase__body">
+<p>VOLT runs on VLA models: architectures that take in what the camera sees plus what you said, and output what the arm should do. I built on <a href="https://github.com/huggingface/lerobot" target="_blank" rel="noopener">LeRobot</a>, Hugging Face&#39;s open robotics stack, and trained on a cluster of RDMA-networked GPU machines I configured myself.</p>
+<p>That cluster is the part people skip. Training robot policies is not a laptop activity. Getting RDMA interconnect working across multiple GPU boxes was its own project inside this project.</p>
+<figure class="shot shot--lead">
+<div class="shot__frame"><img src="assets/img/p13-cluster-bench-1600.webp" srcset="assets/img/p13-cluster-bench-800.webp 800w, assets/img/p13-cluster-bench-1600.webp 1430w" sizes="(max-width: 1000px) 100vw, 640px"
+ width="1430" height="810" alt="Cluster hardware and networking laid out across the workbench"
+ loading="lazy" decoding="async"></div>
+</figure>
+<figure class="shot">
+<div class="shot__frame"><img src="assets/img/p13-node-1600.webp" srcset="assets/img/p13-node-800.webp 800w, assets/img/p13-node-1600.webp 1600w" sizes="(max-width: 1000px) 100vw, 640px"
+ width="1600" height="2133" alt="A GPU node&#39;s motherboard and power supply cabling during the cluster build"
+ loading="lazy" decoding="async"></div>
+<figcaption>One node of the training cluster.</figcaption>
+</figure>
+</div>
+</section>
+
+<section id="phase-14" class="phase" aria-labelledby="h-14">
+<div class="phase__head">
+<p class="phase__num"><span class="phase__word">Phase</span> 14</p>
+<h2 id="h-14">Talk to It</h2>
+<p class="phase__summary">Voice in, action out. No scripts, no teach pendant.</p>
+</div>
+<div class="phase__body">
+<p>What VOLT can do when you just say it:</p>
+<ul class="commands"><li><q>Clean up my desk.</q></li><li><q>Hand me that tool.</q></li><li><q>Turn off my computer.</q></li><li><q>Turn yourself off.</q></li><li><q>Grab the print off the printer.</q></li></ul>
+<p>That last one is my favorite. It opens the 3D printer, identifies the finished part, and lifts it off the bed. Nothing about that is a fixed sequence. The part is in a different place and a different shape every time.</p>
+<p>This is the difference between a robot that repeats and a robot that understands.</p>
+<div class="gallery"><figure class="shot">
+<div class="shot__frame"><img src="assets/img/p14-mic-array-1600.webp" srcset="assets/img/p14-mic-array-800.webp 800w, assets/img/p14-mic-array-1600.webp 1600w" sizes="(max-width: 1000px) 100vw, 640px"
+ width="1600" height="2133" alt="A USB six-microphone array and speaker beside the compute hardware"
+ loading="lazy" decoding="async"></div>
+<figcaption>Six microphones. Voice in, action out.</figcaption>
+</figure>
+<figure class="shot">
+<div class="shot__frame"><img src="assets/img/p14-volt-laptop-1600.webp" srcset="assets/img/p14-volt-laptop-800.webp 800w, assets/img/p14-volt-laptop-1600.webp 1600w" sizes="(max-width: 1000px) 100vw, 640px"
+ width="1600" height="2133" alt="VOLT at the bench with a laptop running its control stack"
+ loading="lazy" decoding="async"></div>
+</figure>
+<figure class="shot">
+<div class="shot__frame"><img src="assets/img/hero-volt-1600.webp"
+ width="495" height="371" alt="VOLT, the yellow six-axis arm, reaching forward with its gripper open"
+ loading="lazy" decoding="async"></div>
+</figure></div>
+</div>
+</section>
+
+<section id="phase-15" class="phase" aria-labelledby="h-15">
+<div class="phase__head">
+<p class="phase__num"><span class="phase__word">Phase</span> 15</p>
+<h2 id="h-15">When It Misses</h2>
+<p class="phase__summary">The interesting part isn&#39;t the successful grasp. It&#39;s what happens after a failed one.</p>
+</div>
+<div class="phase__body">
+<p>A traditional robot that misses a grasp keeps going. It closes on air, lifts nothing, and completes the motion perfectly. It has no idea it failed.</p>
+<p>VOLT checks. It verifies whether the object is actually in the gripper, recognizes when it isn&#39;t, and recovers. That&#39;s error detection built into the policy, not bolted on as a sensor threshold.</p>
+<p>This is what I mean when I say it isn&#39;t robotics, it&#39;s AI. Robotics executes the plan. AI notices the plan didn&#39;t work.</p>
+<figure class="shot shot--lead">
+<div class="shot__frame"><img src="assets/img/p15-fingers-open-1600.webp" srcset="assets/img/p15-fingers-open-800.webp 800w, assets/img/p15-fingers-open-1600.webp 1600w" sizes="(max-width: 1000px) 100vw, 640px"
+ width="1600" height="1200" alt="The gripper&#39;s fingers wide open mid-motion, holding nothing"
+ loading="lazy" decoding="async"></div>
+<figcaption>The interesting part is what happens after a miss.</figcaption>
+</figure>
+<figure class="shot">
+<div class="shot__frame"><img src="assets/img/p15-gripper-closed-1600.webp" srcset="assets/img/p15-gripper-closed-800.webp 800w, assets/img/p15-gripper-closed-1600.webp 1600w" sizes="(max-width: 1000px) 100vw, 640px"
+ width="1600" height="2133" alt="A tight view of the gripper closed at the end of a grasp attempt"
+ loading="lazy" decoding="async"></div>
+</figure>
+</div>
+</section>
+<aside class="pull"><blockquote><p>A robot that can&#39;t fail is a robot that can&#39;t tell you it failed.</p></blockquote></aside>
+
+<section id="phase-16" class="phase" aria-labelledby="h-16">
+<div class="phase__head">
+<p class="phase__num"><span class="phase__word">Phase</span> 16</p>
+<h2 id="h-16">The Paper: RGB Over LiDAR</h2>
+<p class="phase__summary">I argued that cameras beat depth sensors for this class of problem, and I had the ablation data to prove it.</p>
+</div>
+<div class="phase__body">
+<p>I wrote a research paper on input-modality ablation for lightweight convolutional grasp detection, testing how much depth information actually contributes versus plain RGB. The short answer: less than the field assumes.</p>
+<p>Holding architecture and training protocol fixed across fifteen runs, depth-only reached 92.3%, RGB-only 91.5%, and fused RGB-D 90.8%. Under an identical, modest training budget, no modality difference was statistically significant.</p>
+<p>I pushed for RGB cameras over LiDAR on that basis. Plain cameras are cheap and ubiquitous, and the numbers said the sensing stack could lose the depth hardware without a meaningful accuracy tradeoff.</p>
+<p>Being right about this was satisfying. Having the numbers to prove it before the decision was made was the part that mattered.</p>
+<a class="paper" href="assets/docs/how-much-does-depth-matter.pdf" target="_blank" rel="noopener">
+<span class="paper__label">Read the paper</span>
+<span class="paper__title">How Much Does Depth Matter? An Input-Modality Ablation Study of Lightweight Convolutional Grasp Detection on the Cornell Grasping Dataset</span>
+<span class="paper__meta">PDF &middot; 7 pages</span></a>
+<figure class="shot shot--lead">
+<div class="shot__frame"><img src="assets/img/p16-accuracy-1600.webp"
+ width="740" height="565" alt="Bar chart of mean grasp detection accuracy by input modality: depth-only 92.3 percent, RGB-only 91.5 percent, fused RGB-D 90.8 percent, with cross-validation error bars"
+ loading="lazy" decoding="async"></div>
+<figcaption>Depth 92.3%, RGB 91.5%, RGB-D 90.8%. Under an identical training budget, no modality difference is statistically significant.</figcaption>
+</figure>
+<figure class="shot">
+<div class="shot__frame"><img src="assets/img/p16-grasp-1600.webp" srcset="assets/img/p16-grasp-800.webp 800w, assets/img/p16-grasp-1600.webp 1445w" sizes="(max-width: 1000px) 100vw, 640px"
+ width="1445" height="905" alt="Qualitative RGB-D predictions for three objects: the RGB input, the predicted quality, angle and width maps, and the resulting grasp rectangle"
+ loading="lazy" decoding="async"></div>
+<figcaption>RGB in, grasp rectangle out.</figcaption>
+</figure>
+<figure class="shot">
+<div class="shot__frame"><img src="assets/img/p16-paper-cover-1600.webp" srcset="assets/img/p16-paper-cover-800.webp 800w, assets/img/p16-paper-cover-1600.webp 1105w" sizes="(max-width: 1000px) 100vw, 640px"
+ width="1105" height="1430" alt="First page of the paper: How Much Does Depth Matter? An Input-Modality Ablation Study of Lightweight Convolutional Grasp Detection on the Cornell Grasping Dataset"
+ loading="lazy" decoding="async"></div>
+<figcaption>Seven pages, fifteen training runs, every number regenerated by script.</figcaption>
+</figure>
+</div>
+</section>
+
+<section id="phase-17" class="phase" aria-labelledby="h-17">
+<div class="phase__head">
+<p class="phase__num"><span class="phase__word">Phase</span> 17</p>
+<h2 id="h-17">Selected</h2>
+<p class="phase__summary">Twelve people out of thousands of applicants, chosen for the closed-loop PAR6 beta.</p>
+</div>
+<div class="phase__body">
+<p>I shared my VOLT modifications and AI integration with the Source Robotics engineering team. They opened a beta program for the <a href="https://github.com/Source-Robotics/PAR6-Collaborative-Robot-Arm" target="_blank" rel="noopener">PAR6</a>, their closed-loop collaborative arm, and selected twelve builders out of thousands of applicants.</p>
+<p>I&#39;m one of them.</p>
+<p>My work is on the RCB, the closed-loop control box, and on getting an AI system running on top of true closed-loop feedback. Which is, precisely, the thing Version One proved I couldn&#39;t do alone.</p>
+<p>The <a href="https://source-robotics.com/products/par6-beta-kit" target="_blank" rel="noopener">beta kit</a> ships with a hall sensor PCB. On Version One, that was the component I could not get within tolerance. This time the tolerance is somebody else&#39;s solved problem, and I get to build on top of it.</p>
+<p>The arm in Phase 07 fell over because it didn&#39;t know where it was. This one knows.</p>
+<div class="gallery"><figure class="shot">
+<div class="shot__frame"><img src="assets/img/p17-beta-boards-1600.webp" srcset="assets/img/p17-beta-boards-800.webp 800w, assets/img/p17-beta-boards-1600.webp 1600w" sizes="(max-width: 1000px) 100vw, 640px"
+ width="1600" height="1200" alt="PAR6 beta kit circuit boards still in their antistatic bags"
+ loading="lazy" decoding="async"></div>
+<figcaption>The beta kit, as it arrived.</figcaption>
+</figure>
+<figure class="shot">
+<div class="shot__frame"><img src="assets/img/p17-beta-board-1600.webp" srcset="assets/img/p17-beta-board-800.webp 800w, assets/img/p17-beta-board-1600.webp 1600w" sizes="(max-width: 1000px) 100vw, 640px"
+ width="1600" height="2133" alt="A PAR6 beta control board unpacked on the desk"
+ loading="lazy" decoding="async"></div>
+</figure>
+<figure class="shot">
+<div class="shot__frame"><img src="assets/img/p17-beta-bench-1600.webp" srcset="assets/img/p17-beta-bench-800.webp 800w, assets/img/p17-beta-bench-1600.webp 1431w" sizes="(max-width: 1000px) 100vw, 640px"
+ width="1431" height="1073" alt="PAR6 beta boards spread across the bench beside VOLT"
+ loading="lazy" decoding="async"></div>
+</figure>
+<figure class="shot">
+<div class="shot__frame"><img src="assets/img/p17-beta-volt-1600.webp" srcset="assets/img/p17-beta-volt-800.webp 800w, assets/img/p17-beta-volt-1600.webp 1600w" sizes="(max-width: 1000px) 100vw, 640px"
+ width="1600" height="1200" alt="The PAR6 beta electronics laid out in front of VOLT"
+ loading="lazy" decoding="async"></div>
+</figure></div>
+</div>
+</section>
+<aside class="pull"><blockquote><p>I started by failing to build a closed-loop arm. I&#39;m finishing by helping design one.</p></blockquote></aside>
+
+<section id="phase-18" class="phase phase--open" aria-labelledby="h-18">
+<div class="phase__head">
+<p class="phase__num"><span class="phase__word">Phase</span> 18</p>
+<h2 id="h-18">Now: Humanoids</h2>
+<p class="phase__summary">Six axes wasn&#39;t the ceiling. It was the prerequisite.</p>
+</div>
+<div class="phase__body">
+<p>I&#39;m working on humanoid robotics now, including an InMoov-based build. Current focus is the head: a CAD design for a human face with articulated eyes that actually track.</p>
+<p>An arm has to know where its hand is. A face has to decide where to look. Same problem, harder question.</p>
+<p>This section is deliberately unfinished.</p>
+<figure class="shot shot--lead">
+<div class="shot__frame"><img src="assets/img/p18-face-cad-1600.webp" srcset="assets/img/p18-face-cad-800.webp 800w, assets/img/p18-face-cad-1600.webp 1600w" sizes="(max-width: 1000px) 100vw, 640px"
+ width="1600" height="1200" alt="CAD assembly of a humanoid head showing the articulated eye mechanism and its linkages"
+ loading="lazy" decoding="async"></div>
+<figcaption>The head. Articulated eyes that actually track.</figcaption>
+</figure>
+</div>
+</section>
+</main>
+
+<footer class="end" id="contact">
+<div class="end__inner">
+<h2>Let's talk</h2>
+<p class="end__org">Mancuso Intelligence &amp; Defense (MIND) LLC<br><span>Dayton, Ohio</span></p>
+<ul class="end__links">
+<li><a href="https://github.com/Jakecuso" target="_blank" rel="noopener">GitHub</a></li>
+<li><a href="assets/docs/how-much-does-depth-matter.pdf">Paper</a></li>
+<li><a href="mailto:jakeycuso@gmail.com">Email</a></li>
+</ul>
+<figure class="shot">
+<div class="shot__frame"><img src="assets/img/logo-mind-1600.webp"
+ width="279" height="266" alt="The MIND logo: a coiled snake around a shield lettered MIND"
+ loading="lazy" decoding="async"></div>
+</figure>
+</div>
+</footer>
+
+<script type="module" src="assets/js/site.js"></script>
+</body>
+</html>
