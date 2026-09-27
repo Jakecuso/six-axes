@@ -936,8 +936,8 @@
   "w": 1600
  },
  "p14-mic-array": {
-  "alt": "A USB six-microphone array and speaker beside the compute hardware",
-  "caption": "Six microphones. Voice in, action out.",
+  "alt": "A ReSpeaker USB 4-microphone array, still boxed, beside the compute hardware it runs on",
+  "caption": "The mic array. Voice in, action out.",
   "h": 2133,
   "sizes": {
    "1600": {

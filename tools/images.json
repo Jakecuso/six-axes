@@ -65,7 +65,7 @@
     ["26", "p13-cluster-bench",         "Cluster hardware and networking laid out across the workbench", ""],
     ["67", "p13-node",                  "A GPU node's motherboard and power supply cabling during the cluster build", "One node of the training cluster."],
 
-    ["62", "p14-mic-array",             "A USB six-microphone array and speaker beside the compute hardware", "Six microphones. Voice in, action out."],
+    ["62", "p14-mic-array",             "A ReSpeaker USB 4-microphone array, still boxed, beside the compute hardware it runs on", "The mic array. Voice in, action out."],
     ["58", "p14-volt-laptop",           "VOLT at the bench with a laptop running its control stack", ""],
 
     ["57", "p15-fingers-open",          "The gripper's fingers wide open mid-motion, holding nothing", "The interesting part is what happens after a miss."],
