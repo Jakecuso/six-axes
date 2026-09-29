@@ -3,7 +3,9 @@
 
 Sources are the images embedded in SIX AXES.docx plus the loose folders on the
 Desktop. tools/pool_manifest.tsv records which pool index came from which file;
-tools/images.json maps each pool index to an output slug, alt text and caption.
+tools/images.json maps each pool index to an output slug, alt text and caption,
+plus an optional 5th entry of transforms: {"rotate": -90, "crop": [l, t, r, b]}.
+Rotation is applied first, then the crop, so crop boxes are in rotated space.
 
 Run:  python3 tools/prepare-images.py <pool-dir>
 """
@@ -34,17 +36,28 @@ def main(pool):
     spec = json.load(open(os.path.join(ROOT, "tools", "images.json")))
     os.makedirs(OUT, exist_ok=True)
     manifest = {}
-    for idx, slug, alt, caption in spec["images"]:
+    for idx, slug, alt, caption, *rest in spec["images"]:
+        tf = rest[0] if rest else {}
         matches = glob.glob(os.path.join(pool, idx + ".*"))
         if not matches:
             sys.exit(f"pool index {idx} ({slug}) not found in {pool}")
         im = ImageOps.exif_transpose(Image.open(matches[0]))
         has_alpha = im.mode in ("RGBA", "LA") or (im.mode == "P" and "transparency" in im.info)
         im = im.convert("RGBA" if has_alpha else "RGB")
+        if tf.get("rotate"):
+            # Negative is clockwise, matching how you'd describe turning a photo.
+            im = im.rotate(tf["rotate"], expand=True)
+        if tf.get("crop"):
+            im = im.crop(tuple(tf["crop"]))
         entry = {"alt": alt, "caption": caption, "w": im.width, "h": im.height, "sizes": {}}
         for w in WIDTHS:
-            # Never upscale: a 589px-wide screenshot stays 589px wide.
+            # Never upscale: a 589px-wide screenshot stays 589px wide. And when
+            # a narrow source would give two identical renditions, only write
+            # one -- build.mjs omits srcset for these, so the second is dead
+            # weight in the repo.
             target = min(w, im.width)
+            if any(v["w"] == target for v in entry["sizes"].values()):
+                continue
             r = im if target == im.width else im.resize(
                 (target, round(im.height * target / im.width)), Image.LANCZOS)
             name = f"{slug}-{w}.webp"

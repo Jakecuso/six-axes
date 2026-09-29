@@ -41,7 +41,7 @@ export const phases = [
       "So I started where everyone starts. A sketch, a parts list I didn't understand yet, and a lot of tabs open.",
       "It didn't have a name yet. It barely had a shape.",
     ],
-    images: ["p01-version-one-bench", "p01-slicer-arctos"],
+    images: ["p01-version-one", "p01-step-assembly"],
   },
   {
     // Jake's heading said "Four Tools" but his own summary and body name three.
@@ -51,9 +51,17 @@ export const phases = [
     summary: "Fusion 360, MATLAB, Blender. Learned in parallel, because the problem needed all three.",
     body: [
       "Fusion 360 for the parts. MATLAB for the kinematics math. Blender for seeing the motion before I committed to printing anything.",
-      "I learned each one badly at first, then well enough. That's the honest version. What made it work was that I wasn't learning them for their own sake. Every tool was pointed at the same question: where is the hand, and how do I get it there?",
+      "I learned each one badly at first, then well enough. That's the honest version. What made it work was that I wasn't learning them for their own sake. Every tool was pointed at the same question:",
+      {
+        tools: [
+          { name: "Fusion 360", role: "the parts" },
+          { name: "MATLAB", role: "the kinematics" },
+          { name: "Blender", role: "the motion" },
+        ],
+        question: "Where is the hand, and how do I get it there?",
+      },
     ],
-    images: ["p02-fusion-arm", "p02-circuit-sim"],
+    images: [],
   },
   {
     n: 3,
@@ -63,7 +71,7 @@ export const phases = [
       "With three or four axes you can get the gripper to a position. With six, you can get it there in a specific orientation, which is the difference between reaching a bolt and actually turning it.",
       "Six is also where the math stops being friendly. That tradeoff is the entire reason the rest of this page exists.",
     ],
-    images: ["p03-cad-cutaway"],
+    images: ["p03-gripper-topdown"],
   },
   {
     n: 4,
@@ -89,7 +97,7 @@ export const phases = [
     gallery: true,
     images: [
       "p05-mounted", "p05-standing", "p05-joint-motor",
-      "p05-arm-bench", "p05-base-driver", "p05-can-sim",
+      "p05-arm-bench", "p05-base-driver",
     ],
   },
   {
@@ -105,7 +113,7 @@ export const phases = [
     ],
     gallery: true,
     images: [
-      "p06-pcb-layout", "p06-base-boards", "p06-driver-wiring", "p06-cycloidal-disc",
+      "p06-closed-loop-diagram", "p06-pcb-layout", "p06-base-boards", "p06-driver-wiring", "p06-cycloidal-disc",
       "p06-cycloidal-print", "p06-cycloidal-hand", "p06-cycloidal-plate", "p06-cycloidal-parts",
     ],
   },

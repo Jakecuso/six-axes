@@ -3,19 +3,23 @@
   "images": [
     ["01", "hero-volt",                 "VOLT, the yellow six-axis arm, reaching forward with its gripper open", ""],
 
-    ["02", "p01-version-one-bench",     "The orange Version One arm folded on a desk beside a 3D printer", "The orange one, built first."],
-    ["32", "p01-slicer-arctos",         "Slicer software showing the six-axis arm model queued for printing", "611 x 299 x 631 mm of parts, before any of it existed."],
+    ["02", "p01-version-one",           "Version One, the orange six-axis arm, standing assembled on top of a cabinet", "Version One, before it had a name.",
+     {"rotate": -90, "crop": [450, 490, 1150, 1370]}],
+    ["32", "p01-step-assembly",         "The full six-axis arm model assembled on screen from every STEP file, sitting on a virtual print bed", "All the STEP files I made, assembled. 611 x 299 x 631 mm of parts that did not exist yet.",
+     {"crop": [700, 1120, 1950, 2690]}],
 
-    ["03", "p02-fusion-arm",            "Fusion 360 with the full six-axis arm assembly on screen", "Fusion 360. The whole arm, before a single part was printed."],
-    ["05", "p02-circuit-sim",           "Browser-based circuit simulator wiring up joint driver boards and displays", "Simulating the driver wiring before committing to it."],
+    ["05", "p06-closed-loop-diagram",   "The closed-loop wiring diagram in Cirkit Designer: joint driver boards labelled Joint Z 0x03, Joint A 0x04 and Joint B 0x05, wired to a CAN transceiver, limit sensors and the power supply", "The closed-loop diagram, drawn in Cirkit Designer. Each joint gets its own CAN address and its own home limit.",
+     {"rotate": -90, "crop": [0, 352, 1431, 1272]}],
 
-    ["04", "p03-cad-cutaway",           "Cutaway CAD render of the arm showing the internals of every joint", "Six joints, sectioned. Each one is a place the math can go wrong."],
+    ["04", "p03-gripper-topdown",       "Top-down CAD section of the gripper showing its internal components", "Top-down CAD of the gripper and its internal components."],
 
-    ["06", "p04-kinematics",            "DH parameter table listing all six joints, alongside a 3D spatial frame visualization and the homogeneous transform matrix", "The DH table and the spatial frames it produces. J1 base rotation through J6 wrist roll."],
+    ["06", "p04-dh-table",              "Modified DH parameter table listing all six frames with their link lengths, twists, offsets and joint variables, from J1 base rotation to J6 wrist roll", "The DH table: six frames, J1 base rotation through J6 wrist roll.",
+     {"crop": [5, 4, 585, 160]}],
+    ["06", "p04-frames",                "Spatial frame visualization showing coordinate triads at each joint along the kinematic chain, with the forward kinematics position vector drawn in green", "A coordinate frame at every joint. Compose all six and you get where the hand is.",
+     {"crop": [5, 350, 585, 650]}],
 
     ["07", "p05-joint-motor",           "Close-up of an orange printed joint with its motor and belt drive", ""],
     ["08", "p05-arm-bench",             "The orange arm laid out on a bench with its wiring exposed", ""],
-    ["44", "p05-can-sim",               "CAN bus simulation in a browser showing three joint nodes with their hex IDs", "Joint Z 0x03, Joint A 0x04, Joint B 0x05. Learning CAN addressing before wiring it."],
     ["30", "p05-base-driver",           "The orange arm base opened up with a driver board and wiring harness inside", ""],
     ["37", "p05-standing",              "The orange Version One arm standing assembled on a desk", ""],
     ["40", "p05-mounted",               "The orange arm mounted above a 3D printer, fully assembled", "Version One, assembled and moving."],
@@ -25,7 +29,7 @@
     ["45", "p06-driver-wiring",         "A driver board wired into a loom of colored conductors beside a spool of power cable", ""],
     ["10", "p06-cycloidal-disc",        "A printed cycloidal gearbox assembly with its pin ring exposed", "The cycloidal gearbox, assembled."],
     ["11", "p06-cycloidal-print",       "Cycloidal gearbox parts fresh off the print bed next to the printer", ""],
-    ["12", "p06-cycloidal-hand",        "A hand holding the printed cycloidal gearbox housing", "Cycloidal, because the weight had to come from somewhere."],
+    ["12", "p06-cycloidal-hand",        "A hand holding the printed cycloidal gearbox housing", "The cycloidal housing. I went this way to get the weight down."],
     ["33", "p06-cycloidal-plate",       "A hand holding the flat cycloidal output plate with its pins fitted", ""],
     ["34", "p06-cycloidal-parts",       "Cycloidal gearbox components laid out on a desk in front of a monitor", ""],
 
@@ -42,33 +46,33 @@
     ["51", "p10-volt-full",             "VOLT standing fully assembled in yellow, its six joints and stepper motors visible", "VOLT. Version Open Loop Transformer."],
     ["15", "p10-build-1",               "VOLT partially assembled with its wiring loom being routed through the frame", ""],
     ["16", "p10-build-2",               "A close view of VOLT's yellow printed forearm and wrist assembly", ""],
-    ["17", "p10-harness",               "A wiring harness laid out and labelled per joint before installation", "Every conductor labelled before anything went into the frame."],
+    ["17", "p10-harness",               "A wiring harness laid out and labelled per joint before installation", "I labelled every wire before any of it went into the frame."],
     ["18", "p10-build-3",               "VOLT on the desk mid-build with tools and printed parts around it", ""],
-    ["52", "p10-camera",                "VOLT with a camera mounted above its wrist, lit blue against a pegboard", "Camera mounted. This is where it stops being a machine that repeats."],
+    ["52", "p10-camera",                "VOLT with a camera mounted above its wrist, lit blue against a pegboard", "Camera mounted above the wrist. This is what the model actually sees."],
     ["53", "p10-closeup",               "Close view of VOLT's shoulder and upper arm in yellow", ""],
     ["49", "p10-software",              "Robot control software on screen with VOLT in the foreground", ""],
-    ["65", "p10-bench",                 "VOLT installed at the workbench beside monitors and a 3D printer", "The bench it actually lives on."],
+    ["65", "p10-bench",                 "VOLT installed at the workbench beside monitors and a 3D printer", "The bench it lives on."],
 
     ["19", "p11-gripper-pcb",           "The gripper's driver PCB wired up on a yellow printed bracket", ""],
     ["20", "p11-stepper",               "The gripper's stepper motor and driver board laid out on the bench", ""],
     ["55", "p11-stepper-bench",         "Stepper motor and control board being fitted during gripper assembly", ""],
     ["56", "p11-gripper-board",         "The assembled gripper control board mounted to its printed carrier", ""],
     ["21", "p11-mounted",               "The gripper mounted to VOLT's wrist, wired and ready", ""],
-    ["22", "p11-fingers",               "The gripper's white compliant fingers closed around an object", "The fingers, iterated against real objects."],
+    ["22", "p11-fingers",               "The gripper's white compliant fingers closed around an object", "The fingers, after a lot of trying them on real objects."],
     ["23", "p11-in-use",                "VOLT using the gripper on the workbench", ""],
     ["63", "p11-grasp",                 "The gripper holding a part, fingers closed and loaded", ""],
 
     ["24", "p12-machine-1",             "A desktop machine opened up with its motherboard and power cabling exposed", ""],
     ["25", "p12-machine-2",             "A compute node being built on the bench with its components laid out", ""],
-    ["43", "p12-pegboard",              "Compute hardware mounted to a pegboard above the bench with a cooling fan", "Local compute. Nothing here calls out to a cloud API."],
+    ["43", "p12-pegboard",              "Compute hardware mounted to a pegboard above the bench with a cooling fan", "All of it runs here. Nothing calls out to a cloud API."],
 
     ["26", "p13-cluster-bench",         "Cluster hardware and networking laid out across the workbench", ""],
     ["67", "p13-node",                  "A GPU node's motherboard and power supply cabling during the cluster build", "One node of the training cluster."],
 
-    ["62", "p14-mic-array",             "A ReSpeaker USB 4-microphone array, still boxed, beside the compute hardware it runs on", "The mic array. Voice in, action out."],
+    ["62", "p14-mic-array",             "A ReSpeaker USB 4-microphone array, still boxed, beside the compute hardware it runs on", "The mic array it listens through."],
     ["58", "p14-volt-laptop",           "VOLT at the bench with a laptop running its control stack", ""],
 
-    ["57", "p15-fingers-open",          "The gripper's fingers wide open mid-motion, holding nothing", "The interesting part is what happens after a miss."],
+    ["57", "p15-fingers-open",          "The gripper's fingers wide open mid-motion, holding nothing", "Fingers open on a miss. What happens next is the part I care about."],
     ["64", "p15-gripper-closed",        "A tight view of the gripper closed at the end of a grasp attempt", ""],
 
     ["27", "p17-beta-boards",           "PAR6 beta kit circuit boards still in their antistatic bags", "The beta kit, as it arrived."],
@@ -76,7 +80,7 @@
     ["28", "p17-beta-bench",            "PAR6 beta boards spread across the bench beside VOLT", ""],
     ["61", "p17-beta-volt",             "The PAR6 beta electronics laid out in front of VOLT", ""],
 
-    ["66", "p18-face-cad",              "CAD assembly of a humanoid head showing the articulated eye mechanism and its linkages", "The head. Articulated eyes that actually track."],
+    ["66", "p18-face-cad",              "CAD assembly of a humanoid head showing the articulated eye mechanism and its linkages", "The head I'm working on now. The eyes actually track."],
 
     ["29", "logo-mind",                 "The MIND logo: a coiled snake around a shield lettered MIND", ""]
   ]

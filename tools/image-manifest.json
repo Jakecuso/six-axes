@@ -8,11 +8,6 @@
     "file": "hero-volt-1600.webp",
     "h": 371,
     "w": 495
-   },
-   "800": {
-    "file": "hero-volt-800.webp",
-    "h": 371,
-    "w": 495
    }
   },
   "w": 495
@@ -26,99 +21,48 @@
     "file": "logo-mind-1600.webp",
     "h": 266,
     "w": 279
-   },
-   "800": {
-    "file": "logo-mind-800.webp",
-    "h": 266,
-    "w": 279
    }
   },
   "w": 279
  },
- "p01-slicer-arctos": {
-  "alt": "Slicer software showing the six-axis arm model queued for printing",
-  "caption": "611 x 299 x 631 mm of parts, before any of it existed.",
-  "h": 2133,
+ "p01-step-assembly": {
+  "alt": "The full six-axis arm model assembled on screen from every STEP file, sitting on a virtual print bed",
+  "caption": "All the STEP files I made, assembled. 611 x 299 x 631 mm of parts that did not exist yet.",
+  "h": 1570,
   "sizes": {
    "1600": {
-    "file": "p01-slicer-arctos-1600.webp",
-    "h": 2133,
-    "w": 1600
+    "file": "p01-step-assembly-1600.webp",
+    "h": 1570,
+    "w": 1250
    },
    "800": {
-    "file": "p01-slicer-arctos-800.webp",
-    "h": 1067,
+    "file": "p01-step-assembly-800.webp",
+    "h": 1005,
     "w": 800
    }
   },
-  "w": 1600
+  "w": 1250
  },
- "p01-version-one-bench": {
-  "alt": "The orange Version One arm folded on a desk beside a 3D printer",
-  "caption": "The orange one, built first.",
-  "h": 1200,
+ "p01-version-one": {
+  "alt": "Version One, the orange six-axis arm, standing assembled on top of a cabinet",
+  "caption": "Version One, before it had a name.",
+  "h": 880,
   "sizes": {
    "1600": {
-    "file": "p01-version-one-bench-1600.webp",
-    "h": 1200,
-    "w": 1600
-   },
-   "800": {
-    "file": "p01-version-one-bench-800.webp",
-    "h": 600,
-    "w": 800
+    "file": "p01-version-one-1600.webp",
+    "h": 880,
+    "w": 700
    }
   },
-  "w": 1600
+  "w": 700
  },
- "p02-circuit-sim": {
-  "alt": "Browser-based circuit simulator wiring up joint driver boards and displays",
-  "caption": "Simulating the driver wiring before committing to it.",
-  "h": 1200,
-  "sizes": {
-   "1600": {
-    "file": "p02-circuit-sim-1600.webp",
-    "h": 1200,
-    "w": 1600
-   },
-   "800": {
-    "file": "p02-circuit-sim-800.webp",
-    "h": 600,
-    "w": 800
-   }
-  },
-  "w": 1600
- },
- "p02-fusion-arm": {
-  "alt": "Fusion 360 with the full six-axis arm assembly on screen",
-  "caption": "Fusion 360. The whole arm, before a single part was printed.",
-  "h": 1200,
-  "sizes": {
-   "1600": {
-    "file": "p02-fusion-arm-1600.webp",
-    "h": 1200,
-    "w": 1600
-   },
-   "800": {
-    "file": "p02-fusion-arm-800.webp",
-    "h": 600,
-    "w": 800
-   }
-  },
-  "w": 1600
- },
- "p03-cad-cutaway": {
-  "alt": "Cutaway CAD render of the arm showing the internals of every joint",
-  "caption": "Six joints, sectioned. Each one is a place the math can go wrong.",
+ "p03-gripper-topdown": {
+  "alt": "Top-down CAD section of the gripper showing its internal components",
+  "caption": "Top-down CAD of the gripper and its internal components.",
   "h": 141,
   "sizes": {
    "1600": {
-    "file": "p03-cad-cutaway-1600.webp",
-    "h": 141,
-    "w": 272
-   },
-   "800": {
-    "file": "p03-cad-cutaway-800.webp",
+    "file": "p03-gripper-topdown-1600.webp",
     "h": 141,
     "w": 272
    }
@@ -127,16 +71,11 @@
  },
  "p04-dh-table": {
   "alt": "Modified DH parameter table listing all six frames with their link lengths, twists, offsets and joint variables, from J1 base rotation to J6 wrist roll",
-  "caption": "The table the whole arm came out of. Six frames, J1 base rotation through J6 wrist roll.",
+  "caption": "The DH table: six frames, J1 base rotation through J6 wrist roll.",
   "h": 156,
   "sizes": {
    "1600": {
     "file": "p04-dh-table-1600.webp",
-    "h": 156,
-    "w": 580
-   },
-   "800": {
-    "file": "p04-dh-table-800.webp",
     "h": 156,
     "w": 580
    }
@@ -145,16 +84,11 @@
  },
  "p04-frames": {
   "alt": "Spatial frame visualization showing coordinate triads at each joint along the kinematic chain, with the forward kinematics position vector drawn in green",
-  "caption": "Each joint's coordinate triad, and the position vector that falls out of composing all six transforms.",
+  "caption": "A coordinate frame at every joint. Compose all six and you get where the hand is.",
   "h": 300,
   "sizes": {
    "1600": {
     "file": "p04-frames-1600.webp",
-    "h": 300,
-    "w": 580
-   },
-   "800": {
-    "file": "p04-frames-800.webp",
     "h": 300,
     "w": 580
    }
@@ -191,24 +125,6 @@
    },
    "800": {
     "file": "p05-base-driver-800.webp",
-    "h": 1067,
-    "w": 800
-   }
-  },
-  "w": 1600
- },
- "p05-can-sim": {
-  "alt": "CAN bus simulation in a browser showing three joint nodes with their hex IDs",
-  "caption": "Joint Z 0x03, Joint A 0x04, Joint B 0x05. Learning CAN addressing before wiring it.",
-  "h": 2133,
-  "sizes": {
-   "1600": {
-    "file": "p05-can-sim-1600.webp",
-    "h": 2133,
-    "w": 1600
-   },
-   "800": {
-    "file": "p05-can-sim-800.webp",
     "h": 1067,
     "w": 800
    }
@@ -287,6 +203,24 @@
   },
   "w": 1600
  },
+ "p06-closed-loop-diagram": {
+  "alt": "The closed-loop wiring diagram in Cirkit Designer: joint driver boards labelled Joint Z 0x03, Joint A 0x04 and Joint B 0x05, wired to a CAN transceiver, limit sensors and the power supply",
+  "caption": "The closed-loop diagram, drawn in Cirkit Designer. Each joint gets its own CAN address and its own home limit.",
+  "h": 920,
+  "sizes": {
+   "1600": {
+    "file": "p06-closed-loop-diagram-1600.webp",
+    "h": 920,
+    "w": 1431
+   },
+   "800": {
+    "file": "p06-closed-loop-diagram-800.webp",
+    "h": 514,
+    "w": 800
+   }
+  },
+  "w": 1431
+ },
  "p06-cycloidal-disc": {
   "alt": "A printed cycloidal gearbox assembly with its pin ring exposed",
   "caption": "The cycloidal gearbox, assembled.",
@@ -307,7 +241,7 @@
  },
  "p06-cycloidal-hand": {
   "alt": "A hand holding the printed cycloidal gearbox housing",
-  "caption": "Cycloidal, because the weight had to come from somewhere.",
+  "caption": "The cycloidal housing. I went this way to get the weight down.",
   "h": 991,
   "sizes": {
    "1600": {
@@ -366,11 +300,6 @@
   "sizes": {
    "1600": {
     "file": "p06-cycloidal-print-1600.webp",
-    "h": 517,
-    "w": 689
-   },
-   "800": {
-    "file": "p06-cycloidal-print-800.webp",
     "h": 517,
     "w": 689
    }
@@ -541,7 +470,7 @@
  },
  "p10-bench": {
   "alt": "VOLT installed at the workbench beside monitors and a 3D printer",
-  "caption": "The bench it actually lives on.",
+  "caption": "The bench it lives on.",
   "h": 2133,
   "sizes": {
    "1600": {
@@ -613,7 +542,7 @@
  },
  "p10-camera": {
   "alt": "VOLT with a camera mounted above its wrist, lit blue against a pegboard",
-  "caption": "Camera mounted. This is where it stops being a machine that repeats.",
+  "caption": "Camera mounted above the wrist. This is what the model actually sees.",
   "h": 2133,
   "sizes": {
    "1600": {
@@ -649,7 +578,7 @@
  },
  "p10-harness": {
   "alt": "A wiring harness laid out and labelled per joint before installation",
-  "caption": "Every conductor labelled before anything went into the frame.",
+  "caption": "I labelled every wire before any of it went into the frame.",
   "h": 1200,
   "sizes": {
    "1600": {
@@ -703,7 +632,7 @@
  },
  "p11-fingers": {
   "alt": "The gripper's white compliant fingers closed around an object",
-  "caption": "The fingers, iterated against real objects.",
+  "caption": "The fingers, after a lot of trying them on real objects.",
   "h": 1200,
   "sizes": {
    "1600": {
@@ -883,7 +812,7 @@
  },
  "p12-pegboard": {
   "alt": "Compute hardware mounted to a pegboard above the bench with a cooling fan",
-  "caption": "Local compute. Nothing here calls out to a cloud API.",
+  "caption": "All of it runs here. Nothing calls out to a cloud API.",
   "h": 906,
   "sizes": {
    "1600": {
@@ -937,7 +866,7 @@
  },
  "p14-mic-array": {
   "alt": "A ReSpeaker USB 4-microphone array, still boxed, beside the compute hardware it runs on",
-  "caption": "The mic array. Voice in, action out.",
+  "caption": "The mic array it listens through.",
   "h": 2133,
   "sizes": {
    "1600": {
@@ -973,7 +902,7 @@
  },
  "p15-fingers-open": {
   "alt": "The gripper's fingers wide open mid-motion, holding nothing",
-  "caption": "The interesting part is what happens after a miss.",
+  "caption": "Fingers open on a miss. What happens next is the part I care about.",
   "h": 1200,
   "sizes": {
    "1600": {
@@ -1009,16 +938,11 @@
  },
  "p16-accuracy": {
   "alt": "Bar chart of mean grasp detection accuracy by input modality: depth-only 92.3 percent, RGB-only 91.5 percent, fused RGB-D 90.8 percent, with cross-validation error bars",
-  "caption": "Depth 92.3%, RGB 91.5%, RGB-D 90.8%. Under an identical training budget, no modality difference is statistically significant.",
+  "caption": "Depth 92.3%, RGB 91.5%, RGB-D 90.8%. Same training budget for all three, and the gaps are not statistically significant.",
   "h": 565,
   "sizes": {
    "1600": {
     "file": "p16-accuracy-1600.webp",
-    "h": 565,
-    "w": 740
-   },
-   "800": {
-    "file": "p16-accuracy-800.webp",
     "h": 565,
     "w": 740
    }
@@ -1045,13 +969,13 @@
  },
  "p16-paper-cover": {
   "alt": "First page of the paper: How Much Does Depth Matter? An Input-Modality Ablation Study of Lightweight Convolutional Grasp Detection on the Cornell Grasping Dataset",
-  "caption": "Seven pages, fifteen training runs, every number regenerated by script.",
-  "h": 1430,
+  "caption": "Seven pages and fifteen training runs. Every number in it comes back\n        out of a script.",
+  "h": 2071,
   "sizes": {
    "1600": {
     "file": "p16-paper-cover-1600.webp",
-    "h": 1430,
-    "w": 1105
+    "h": 2071,
+    "w": 1600
    },
    "800": {
     "file": "p16-paper-cover-800.webp",
@@ -1059,7 +983,7 @@
     "w": 800
    }
   },
-  "w": 1105
+  "w": 1600
  },
  "p17-beta-bench": {
   "alt": "PAR6 beta boards spread across the bench beside VOLT",
@@ -1135,7 +1059,7 @@
  },
  "p18-face-cad": {
   "alt": "CAD assembly of a humanoid head showing the articulated eye mechanism and its linkages",
-  "caption": "The head. Articulated eyes that actually track.",
+  "caption": "The head I'm working on now. The eyes actually track.",
   "h": 1200,
   "sizes": {
    "1600": {

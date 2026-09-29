@@ -83,16 +83,16 @@
 <p>So I started where everyone starts. A sketch, a parts list I didn&#39;t understand yet, and a lot of tabs open.</p>
 <p>It didn&#39;t have a name yet. It barely had a shape.</p>
 <figure class="shot shot--lead">
-<div class="shot__frame"><img src="assets/img/p01-version-one-bench-1600.webp" srcset="assets/img/p01-version-one-bench-800.webp 800w, assets/img/p01-version-one-bench-1600.webp 1600w" sizes="(max-width: 1000px) 100vw, 640px"
- width="1600" height="1200" alt="The orange Version One arm folded on a desk beside a 3D printer"
+<div class="shot__frame"><img src="assets/img/p01-version-one-1600.webp"
+ width="700" height="880" alt="Version One, the orange six-axis arm, standing assembled on top of a cabinet"
  loading="lazy" decoding="async"></div>
-<figcaption>The orange one, built first.</figcaption>
+<figcaption>Version One, before it had a name.</figcaption>
 </figure>
 <figure class="shot">
-<div class="shot__frame"><img src="assets/img/p01-slicer-arctos-1600.webp" srcset="assets/img/p01-slicer-arctos-800.webp 800w, assets/img/p01-slicer-arctos-1600.webp 1600w" sizes="(max-width: 1000px) 100vw, 640px"
- width="1600" height="2133" alt="Slicer software showing the six-axis arm model queued for printing"
+<div class="shot__frame"><img src="assets/img/p01-step-assembly-1600.webp" srcset="assets/img/p01-step-assembly-800.webp 800w, assets/img/p01-step-assembly-1600.webp 1250w" sizes="(max-width: 1000px) 100vw, 640px"
+ width="1250" height="1570" alt="The full six-axis arm model assembled on screen from every STEP file, sitting on a virtual print bed"
  loading="lazy" decoding="async"></div>
-<figcaption>611 x 299 x 631 mm of parts, before any of it existed.</figcaption>
+<figcaption>All the STEP files I made, assembled. 611 x 299 x 631 mm of parts that did not exist yet.</figcaption>
 </figure>
 </div>
 </section>
@@ -105,19 +105,12 @@
 </div>
 <div class="phase__body">
 <p>Fusion 360 for the parts. MATLAB for the kinematics math. Blender for seeing the motion before I committed to printing anything.</p>
-<p>I learned each one badly at first, then well enough. That&#39;s the honest version. What made it work was that I wasn&#39;t learning them for their own sake. Every tool was pointed at the same question: where is the hand, and how do I get it there?</p>
-<figure class="shot shot--lead">
-<div class="shot__frame"><img src="assets/img/p02-fusion-arm-1600.webp" srcset="assets/img/p02-fusion-arm-800.webp 800w, assets/img/p02-fusion-arm-1600.webp 1600w" sizes="(max-width: 1000px) 100vw, 640px"
- width="1600" height="1200" alt="Fusion 360 with the full six-axis arm assembly on screen"
- loading="lazy" decoding="async"></div>
-<figcaption>Fusion 360. The whole arm, before a single part was printed.</figcaption>
+<p>I learned each one badly at first, then well enough. That&#39;s the honest version. What made it work was that I wasn&#39;t learning them for their own sake. Every tool was pointed at the same question:</p>
+<figure class="tools">
+<ul><li><span class="tools__name">Fusion 360</span><span class="tools__role">the parts</span></li><li><span class="tools__name">MATLAB</span><span class="tools__role">the kinematics</span></li><li><span class="tools__name">Blender</span><span class="tools__role">the motion</span></li></ul>
+<figcaption>Where is the hand, and how do I get it there?</figcaption>
 </figure>
-<figure class="shot">
-<div class="shot__frame"><img src="assets/img/p02-circuit-sim-1600.webp" srcset="assets/img/p02-circuit-sim-800.webp 800w, assets/img/p02-circuit-sim-1600.webp 1600w" sizes="(max-width: 1000px) 100vw, 640px"
- width="1600" height="1200" alt="Browser-based circuit simulator wiring up joint driver boards and displays"
- loading="lazy" decoding="async"></div>
-<figcaption>Simulating the driver wiring before committing to it.</figcaption>
-</figure>
+
 </div>
 </section>
 
@@ -131,10 +124,10 @@
 <p>With three or four axes you can get the gripper to a position. With six, you can get it there in a specific orientation, which is the difference between reaching a bolt and actually turning it.</p>
 <p>Six is also where the math stops being friendly. That tradeoff is the entire reason the rest of this page exists.</p>
 <figure class="shot shot--lead">
-<div class="shot__frame"><img src="assets/img/p03-cad-cutaway-1600.webp"
- width="272" height="141" alt="Cutaway CAD render of the arm showing the internals of every joint"
+<div class="shot__frame"><img src="assets/img/p03-gripper-topdown-1600.webp"
+ width="272" height="141" alt="Top-down CAD section of the gripper showing its internal components"
  loading="lazy" decoding="async"></div>
-<figcaption>Six joints, sectioned. Each one is a place the math can go wrong.</figcaption>
+<figcaption>Top-down CAD of the gripper and its internal components.</figcaption>
 </figure>
 </div>
 </section>
@@ -153,13 +146,13 @@
 <div class="shot__frame"><img src="assets/img/p04-dh-table-1600.webp"
  width="580" height="156" alt="Modified DH parameter table listing all six frames with their link lengths, twists, offsets and joint variables, from J1 base rotation to J6 wrist roll"
  loading="lazy" decoding="async"></div>
-<figcaption>The table the whole arm came out of. Six frames, J1 base rotation through J6 wrist roll.</figcaption>
+<figcaption>The DH table: six frames, J1 base rotation through J6 wrist roll.</figcaption>
 </figure>
 <figure class="shot">
 <div class="shot__frame"><img src="assets/img/p04-frames-1600.webp"
  width="580" height="300" alt="Spatial frame visualization showing coordinate triads at each joint along the kinematic chain, with the forward kinematics position vector drawn in green"
  loading="lazy" decoding="async"></div>
-<figcaption>Each joint&#39;s coordinate triad, and the position vector that falls out of composing all six transforms.</figcaption>
+<figcaption>A coordinate frame at every joint. Compose all six and you get where the hand is.</figcaption>
 </figure>
 </div>
 </section>
@@ -200,12 +193,6 @@
 <div class="shot__frame"><img src="assets/img/p05-base-driver-1600.webp" srcset="assets/img/p05-base-driver-800.webp 800w, assets/img/p05-base-driver-1600.webp 1600w" sizes="(max-width: 1000px) 100vw, 640px"
  width="1600" height="2133" alt="The orange arm base opened up with a driver board and wiring harness inside"
  loading="lazy" decoding="async"></div>
-</figure>
-<figure class="shot">
-<div class="shot__frame"><img src="assets/img/p05-can-sim-1600.webp" srcset="assets/img/p05-can-sim-800.webp 800w, assets/img/p05-can-sim-1600.webp 1600w" sizes="(max-width: 1000px) 100vw, 640px"
- width="1600" height="2133" alt="CAN bus simulation in a browser showing three joint nodes with their hex IDs"
- loading="lazy" decoding="async"></div>
-<figcaption>Joint Z 0x03, Joint A 0x04, Joint B 0x05. Learning CAN addressing before wiring it.</figcaption>
 </figure></div>
 </div>
 </section>
@@ -221,6 +208,12 @@
 <p>I designed a cycloidal gearbox of my own for the joints, to get the reduction I needed without carrying the weight a conventional gearbox would have cost me.</p>
 <p>It was the most ambitious thing I&#39;d attempted and the place where every small error I&#39;d made upstream finally showed up.</p>
 <div class="gallery"><figure class="shot">
+<div class="shot__frame"><img src="assets/img/p06-closed-loop-diagram-1600.webp" srcset="assets/img/p06-closed-loop-diagram-800.webp 800w, assets/img/p06-closed-loop-diagram-1600.webp 1431w" sizes="(max-width: 1000px) 100vw, 640px"
+ width="1431" height="920" alt="The closed-loop wiring diagram in Cirkit Designer: joint driver boards labelled Joint Z 0x03, Joint A 0x04 and Joint B 0x05, wired to a CAN transceiver, limit sensors and the power supply"
+ loading="lazy" decoding="async"></div>
+<figcaption>The closed-loop diagram, drawn in Cirkit Designer. Each joint gets its own CAN address and its own home limit.</figcaption>
+</figure>
+<figure class="shot">
 <div class="shot__frame"><img src="assets/img/p06-pcb-layout-1600.webp" srcset="assets/img/p06-pcb-layout-800.webp 800w, assets/img/p06-pcb-layout-1600.webp 1600w" sizes="(max-width: 1000px) 100vw, 640px"
  width="1600" height="1171" alt="PCB layout in a CAD tool showing dense routed traces on a two-layer board"
  loading="lazy" decoding="async"></div>
@@ -251,7 +244,7 @@
 <div class="shot__frame"><img src="assets/img/p06-cycloidal-hand-1600.webp" srcset="assets/img/p06-cycloidal-hand-800.webp 800w, assets/img/p06-cycloidal-hand-1600.webp 1322w" sizes="(max-width: 1000px) 100vw, 640px"
  width="1322" height="991" alt="A hand holding the printed cycloidal gearbox housing"
  loading="lazy" decoding="async"></div>
-<figcaption>Cycloidal, because the weight had to come from somewhere.</figcaption>
+<figcaption>The cycloidal housing. I went this way to get the weight down.</figcaption>
 </figure>
 <figure class="shot">
 <div class="shot__frame"><img src="assets/img/p06-cycloidal-plate-1600.webp" srcset="assets/img/p06-cycloidal-plate-800.webp 800w, assets/img/p06-cycloidal-plate-1600.webp 1600w" sizes="(max-width: 1000px) 100vw, 640px"
@@ -359,7 +352,7 @@
 <div class="shot__frame"><img src="assets/img/p10-bench-1600.webp" srcset="assets/img/p10-bench-800.webp 800w, assets/img/p10-bench-1600.webp 1600w" sizes="(max-width: 1000px) 100vw, 640px"
  width="1600" height="2133" alt="VOLT installed at the workbench beside monitors and a 3D printer"
  loading="lazy" decoding="async"></div>
-<figcaption>The bench it actually lives on.</figcaption>
+<figcaption>The bench it lives on.</figcaption>
 </figure>
 <figure class="shot">
 <div class="shot__frame"><img src="assets/img/p10-build-1-1600.webp" srcset="assets/img/p10-build-1-800.webp 800w, assets/img/p10-build-1-1600.webp 1600w" sizes="(max-width: 1000px) 100vw, 640px"
@@ -375,7 +368,7 @@
 <div class="shot__frame"><img src="assets/img/p10-harness-1600.webp" srcset="assets/img/p10-harness-800.webp 800w, assets/img/p10-harness-1600.webp 1600w" sizes="(max-width: 1000px) 100vw, 640px"
  width="1600" height="1200" alt="A wiring harness laid out and labelled per joint before installation"
  loading="lazy" decoding="async"></div>
-<figcaption>Every conductor labelled before anything went into the frame.</figcaption>
+<figcaption>I labelled every wire before any of it went into the frame.</figcaption>
 </figure>
 <figure class="shot">
 <div class="shot__frame"><img src="assets/img/p10-build-3-1600.webp" srcset="assets/img/p10-build-3-800.webp 800w, assets/img/p10-build-3-1600.webp 1600w" sizes="(max-width: 1000px) 100vw, 640px"
@@ -386,7 +379,7 @@
 <div class="shot__frame"><img src="assets/img/p10-camera-1600.webp" srcset="assets/img/p10-camera-800.webp 800w, assets/img/p10-camera-1600.webp 1600w" sizes="(max-width: 1000px) 100vw, 640px"
  width="1600" height="2133" alt="VOLT with a camera mounted above its wrist, lit blue against a pegboard"
  loading="lazy" decoding="async"></div>
-<figcaption>Camera mounted. This is where it stops being a machine that repeats.</figcaption>
+<figcaption>Camera mounted above the wrist. This is what the model actually sees.</figcaption>
 </figure>
 <figure class="shot">
 <div class="shot__frame"><img src="assets/img/p10-closeup-1600.webp" srcset="assets/img/p10-closeup-800.webp 800w, assets/img/p10-closeup-1600.webp 1600w" sizes="(max-width: 1000px) 100vw, 640px"
@@ -414,7 +407,7 @@
 <div class="shot__frame"><img src="assets/img/p11-fingers-1600.webp" srcset="assets/img/p11-fingers-800.webp 800w, assets/img/p11-fingers-1600.webp 1600w" sizes="(max-width: 1000px) 100vw, 640px"
  width="1600" height="1200" alt="The gripper&#39;s white compliant fingers closed around an object"
  loading="lazy" decoding="async"></div>
-<figcaption>The fingers, iterated against real objects.</figcaption>
+<figcaption>The fingers, after a lot of trying them on real objects.</figcaption>
 </figure>
 <figure class="shot">
 <div class="shot__frame"><img src="assets/img/p11-grasp-1600.webp" srcset="assets/img/p11-grasp-800.webp 800w, assets/img/p11-grasp-1600.webp 1600w" sizes="(max-width: 1000px) 100vw, 640px"
@@ -470,7 +463,7 @@
 <div class="shot__frame"><img src="assets/img/p12-pegboard-1600.webp" srcset="assets/img/p12-pegboard-800.webp 800w, assets/img/p12-pegboard-1600.webp 1600w" sizes="(max-width: 1000px) 100vw, 640px"
  width="1600" height="906" alt="Compute hardware mounted to a pegboard above the bench with a cooling fan"
  loading="lazy" decoding="async"></div>
-<figcaption>Local compute. Nothing here calls out to a cloud API.</figcaption>
+<figcaption>All of it runs here. Nothing calls out to a cloud API.</figcaption>
 </figure>
 <figure class="shot">
 <div class="shot__frame"><img src="assets/img/p12-machine-1-1600.webp" srcset="assets/img/p12-machine-1-800.webp 800w, assets/img/p12-machine-1-1600.webp 1600w" sizes="(max-width: 1000px) 100vw, 640px"
@@ -523,7 +516,7 @@
 <div class="shot__frame"><img src="assets/img/p14-mic-array-1600.webp" srcset="assets/img/p14-mic-array-800.webp 800w, assets/img/p14-mic-array-1600.webp 1600w" sizes="(max-width: 1000px) 100vw, 640px"
  width="1600" height="2133" alt="A ReSpeaker USB 4-microphone array, still boxed, beside the compute hardware it runs on"
  loading="lazy" decoding="async"></div>
-<figcaption>The mic array. Voice in, action out.</figcaption>
+<figcaption>The mic array it listens through.</figcaption>
 </figure>
 <figure class="shot">
 <div class="shot__frame"><img src="assets/img/p14-volt-laptop-1600.webp" srcset="assets/img/p14-volt-laptop-800.webp 800w, assets/img/p14-volt-laptop-1600.webp 1600w" sizes="(max-width: 1000px) 100vw, 640px"
@@ -552,7 +545,7 @@
 <div class="shot__frame"><img src="assets/img/p15-fingers-open-1600.webp" srcset="assets/img/p15-fingers-open-800.webp 800w, assets/img/p15-fingers-open-1600.webp 1600w" sizes="(max-width: 1000px) 100vw, 640px"
  width="1600" height="1200" alt="The gripper&#39;s fingers wide open mid-motion, holding nothing"
  loading="lazy" decoding="async"></div>
-<figcaption>The interesting part is what happens after a miss.</figcaption>
+<figcaption>Fingers open on a miss. What happens next is the part I care about.</figcaption>
 </figure>
 <figure class="shot">
 <div class="shot__frame"><img src="assets/img/p15-gripper-closed-1600.webp" srcset="assets/img/p15-gripper-closed-800.webp 800w, assets/img/p15-gripper-closed-1600.webp 1600w" sizes="(max-width: 1000px) 100vw, 640px"
@@ -582,7 +575,7 @@
 <div class="shot__frame"><img src="assets/img/p16-accuracy-1600.webp"
  width="740" height="565" alt="Bar chart of mean grasp detection accuracy by input modality: depth-only 92.3 percent, RGB-only 91.5 percent, fused RGB-D 90.8 percent, with cross-validation error bars"
  loading="lazy" decoding="async"></div>
-<figcaption>Depth 92.3%, RGB 91.5%, RGB-D 90.8%. Under an identical training budget, no modality difference is statistically significant.</figcaption>
+<figcaption>Depth 92.3%, RGB 91.5%, RGB-D 90.8%. Same training budget for all three, and the gaps are not statistically significant.</figcaption>
 </figure>
 <figure class="shot">
 <div class="shot__frame"><img src="assets/img/p16-grasp-1600.webp" srcset="assets/img/p16-grasp-800.webp 800w, assets/img/p16-grasp-1600.webp 1445w" sizes="(max-width: 1000px) 100vw, 640px"
@@ -591,10 +584,11 @@
 <figcaption>RGB in, grasp rectangle out.</figcaption>
 </figure>
 <figure class="shot">
-<div class="shot__frame"><img src="assets/img/p16-paper-cover-1600.webp" srcset="assets/img/p16-paper-cover-800.webp 800w, assets/img/p16-paper-cover-1600.webp 1105w" sizes="(max-width: 1000px) 100vw, 640px"
- width="1105" height="1430" alt="First page of the paper: How Much Does Depth Matter? An Input-Modality Ablation Study of Lightweight Convolutional Grasp Detection on the Cornell Grasping Dataset"
+<div class="shot__frame"><img src="assets/img/p16-paper-cover-1600.webp" srcset="assets/img/p16-paper-cover-800.webp 800w, assets/img/p16-paper-cover-1600.webp 1600w" sizes="(max-width: 1000px) 100vw, 640px"
+ width="1600" height="2071" alt="First page of the paper: How Much Does Depth Matter? An Input-Modality Ablation Study of Lightweight Convolutional Grasp Detection on the Cornell Grasping Dataset"
  loading="lazy" decoding="async"></div>
-<figcaption>Seven pages, fifteen training runs, every number regenerated by script.</figcaption>
+<figcaption>Seven pages and fifteen training runs. Every number in it comes back
+        out of a script.</figcaption>
 </figure>
 </div>
 </section>
@@ -650,7 +644,7 @@
 <div class="shot__frame"><img src="assets/img/p18-face-cad-1600.webp" srcset="assets/img/p18-face-cad-800.webp 800w, assets/img/p18-face-cad-1600.webp 1600w" sizes="(max-width: 1000px) 100vw, 640px"
  width="1600" height="1200" alt="CAD assembly of a humanoid head showing the articulated eye mechanism and its linkages"
  loading="lazy" decoding="async"></div>
-<figcaption>The head. Articulated eyes that actually track.</figcaption>
+<figcaption>The head I&#39;m working on now. The eyes actually track.</figcaption>
 </figure>
 </div>
 </section>

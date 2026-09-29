@@ -20,7 +20,7 @@ const rich = (s) => esc(s).replace(
 function figure(slug, { lead = false, eager = false } = {}) {
   const m = img[slug];
   if (!m) throw new Error(`no processed image for "${slug}" — run tools/prepare-images.py`);
-  const big = m.sizes["1600"], small = m.sizes["800"];
+  const big = m.sizes["1600"], small = m.sizes["800"] ?? m.sizes["1600"];
   // Small assets (the logo, the 589px kinematics screenshot) have identical
   // renditions; a srcset there would just make the browser guess.
   const srcset = big.w === small.w ? "" :
@@ -40,6 +40,12 @@ function block(b) {
     b.list.map((x) => `<li>${rich(x)}</li>`).join("")}</ol>`;
   if (b.commands) return `<ul class="commands">${
     b.commands.map((x) => `<li><q>${esc(x)}</q></li>`).join("")}</ul>`;
+  if (b.tools) return `<figure class="tools">
+<ul>${b.tools.map((t) =>
+  `<li><span class="tools__name">${esc(t.name)}</span>` +
+  `<span class="tools__role">${esc(t.role)}</span></li>`).join("")}</ul>
+<figcaption>${esc(b.question)}</figcaption>
+</figure>`;
   throw new Error(`unknown block: ${JSON.stringify(b)}`);
 }
 

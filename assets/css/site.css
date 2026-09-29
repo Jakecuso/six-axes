@@ -179,11 +179,29 @@ main{padding-left:0}
 .commands q::before{color:var(--orange)}
 .commands q::after{color:var(--orange)}
 
+/* Three tools converging on one question, drawn the way the text says it. */
+.tools{margin:1.9rem 0 0;max-width:60ch}
+.tools ul{list-style:none;margin:0;padding:0;display:grid;gap:10px;
+  grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+.tools li{position:relative;border:1px solid var(--line);padding:.9rem 1rem 1rem;
+  display:grid;gap:.3rem}
+.tools__name{font:600 1.05rem/1.2 var(--cond);letter-spacing:.01em}
+.tools__role{font:400 .74rem/1 var(--mono);letter-spacing:.1em;color:var(--dim)}
+/* The leader line down to the question they all point at. */
+.tools figcaption{position:relative;margin-top:2.4rem;padding-top:0;
+  font:600 clamp(1.05rem,2.2vw,1.3rem)/1.35 var(--cond);color:var(--ink);
+  max-width:34ch}
+.tools figcaption::before{content:"";position:absolute;left:0;top:-1.5rem;
+  width:1px;height:1.1rem;background:var(--line)}
+.tools figcaption::after{content:"";position:absolute;left:-.2rem;top:-.45rem;
+  width:.45rem;height:.45rem;border-right:1px solid var(--line);
+  border-bottom:1px solid var(--line);transform:rotate(45deg)}
+
 /* ───────── figures ───────── */
 .shot{margin:2.5rem 0 0}
 .shot--lead{margin-top:2.75rem}
 .shot__frame{position:relative;border:1px solid rgba(63,112,153,.55);padding:6px;
-  background:rgba(8,26,44,.4)}
+  background:rgba(8,26,44,.4);width:fit-content;max-width:100%}
 /* Crop marks, the way a plotted sheet trims. */
 .shot__frame::before,.shot__frame::after{content:"";position:absolute;
   width:13px;height:13px;border:1px solid var(--line);pointer-events:none}
